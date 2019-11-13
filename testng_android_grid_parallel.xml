@@ -1,0 +1,27 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Android_Grid_Parallel" parallel="tests" thread-count="1">
+   <test name="Test1">
+        <parameter name="deviceName" value="Nexus_5_API_22"/>
+        <parameter name="UDID" value="emulator-5554"/>
+        <parameter name="platformVersion" value="Version_One"/>
+        <parameter name="node_port" value="1234"/>
+        <classes>
+            <class name="Test.Android_Grid_Parallel">
+            </class>
+        </classes>
+    </test>
+  <test name="Test2">
+        <parameter name="deviceName" value="Pixel_3_XL_API_29"/>
+        <parameter name="UDID" value="emulator-5556"/>
+        <parameter name="platformVersion" value="Version_Two"/>
+         <parameter name="node_port" value="3456"/>
+        <classes>
+            <class name="Test.Android_Grid_Parallel">
+            </class>
+        </classes>
+    </test>
+
+</suite>
+

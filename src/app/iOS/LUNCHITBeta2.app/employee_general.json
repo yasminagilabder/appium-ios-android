@@ -1,0 +1,11 @@
+{
+    "staticUrls": {
+        "legalConditions": "text/legal-conditions",
+        "legalConditionsDetails": "https://www.spendit.de/lunchit/app/%@/legal/conditions",
+        "privacyPolicy": "https://www.spendit.de/lunchit/app/%@/legal/privacy-policy-apps",
+        "lunchitInfo": "https://www.spendit.de/lunchit/app/%@/lunchit-info",
+        "imprint": "https://www.spendit.de/lunchit/app/%@/imprint",
+        "faq": "https://www.spendit.de/faq/?category=74298&subcategory=102434"
+    },
+    "receiptTypeSelectable": false
+}

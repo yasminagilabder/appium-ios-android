@@ -1,0 +1,10 @@
+target/
+.idea/
+*.iml
+src/app/.DS_Store
+# Eclipse / Scala-IDE
+.DS_Store
+.classpath
+.project
+.settings/
+.cache-main
