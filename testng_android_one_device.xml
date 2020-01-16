@@ -1,0 +1,18 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Android_Grid_One">
+
+    <test name="Test2">
+        <parameter name="deviceName" value="Pixel_3_XL_API_29"/>
+        <parameter name="UDID" value="emulator-5554"/>
+        <parameter name="platformVersion" value="8.1.0"/>
+        <parameter name="node_port" value="3456"/>
+        <classes>
+            <class name="Test.Android_Grid_Parallel">
+            </class>
+        </classes>
+    </test>
+
+</suite>
+

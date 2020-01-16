@@ -1,7 +1,9 @@
 package Test;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -25,6 +27,7 @@ public class Android_Grid_Parallel {
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "/src/app/Android");
         File app = new File(appDir, "app-beta-debug.apk");
+        System.out.println("app dir: "+app.getAbsolutePath());
         capabilities.setCapability("app", app.getAbsolutePath());
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("udid", UDID);
@@ -41,16 +44,29 @@ public class Android_Grid_Parallel {
     }
     
     @Test
-    public void advertiseTest() {
+    public void testLunchit() throws InterruptedException {
         
         System.out.println("capabilities: "+capabilities.toString());
+    
       
+        MobileElement el1 = (MobileElement) androidDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout");
+        el1.click();
+        MobileElement el2 = (MobileElement) androidDriver.findElementById("com.lunchit.android.beta:id/aet_email");
+        el2.sendKeys("happyspendit.de.test1@gmail.com");
+        MobileElement el3 = (MobileElement) androidDriver.findElementById("com.lunchit.android.beta:id/aet_password");
+        el3.sendKeys("lindaBrown124!");
+        MobileElement el4 = (MobileElement) androidDriver.findElementById("com.lunchit.android.beta:id/btn_login");
+        el4.click();
+        MobileElement close = (MobileElement) androidDriver.findElementById("com.lunchit.android.beta:id/close_happy");
+        close.click();
+        Thread.sleep(10000);
+        
     }
     @AfterClass
     public void tearDown() {
-        if (androidDriver!=null){
+        /*if (androidDriver!=null){
             androidDriver.quit();
-        }
+        }*/
     }
 
    

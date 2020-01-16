@@ -24,7 +24,7 @@ public class IOS_Grid_Parallel {
     public void setUp(String deviceName, String platformVersion, String node_port ) throws MalformedURLException {
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "/src/app/iOS");
-        File app = new File(appDir, "LUNCHITBeta2.app");
+        File app = new File(appDir, "LUNCHIT_RC.ipa");
         capabilities.setCapability("app", app.getAbsolutePath());
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("deviceName", deviceName);
@@ -32,7 +32,7 @@ public class IOS_Grid_Parallel {
         capabilities.setCapability("automationName", "XCUITest");
         URL url = new URL("http://localhost:" + node_port +"/wd/hub");
         System.out.println("url: "+url.toString());
-        capabilities.setCapability("noReset", "true");
+       // capabilities.setCapability("noReset", "true");
         driver = new IOSDriver<MobileElement>(url, capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
