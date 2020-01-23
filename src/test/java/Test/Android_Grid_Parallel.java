@@ -47,11 +47,19 @@ public class Android_Grid_Parallel {
 		capabilities.setCapability("autoGrantPermissions", true);
 		capabilities.setCapability("fullReset", "true");
 		capabilities.setCapability("noReset", "false");
-		//capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);
-		// capabilities.setCapability("uiautomator2ServerLaunchTimeout",40000);
 		capabilities.setCapability("printPageSourceOnFindFailure", "true");
-	
+		File receiptDir1 = new File(classpathRoot, "/src/test/resources/receipts/DE_RECEIPT1.jpg");
+		//androidDriver.executeScript("adb", "adb"+UDID+"push"+receiptDir1.getAbsolutePath()+"/sdcard/DE_RECEIPT1.jpg");
+		//ProcessBuilder pb = new ProcessBuilder("adb", "-s", UDID, "push", receiptDir1.getAbsolutePath(), "/sdcard/DE_RECEIPT1.jpg");
+	/*	Process pc = pb.start();
+		try {
+			pc.waitFor();
+			androidDriver.exe
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}*/
 		URL url = new URL("http://localhost:" + node_port + "/wd/hub");
 		androidDriver = new AndroidDriver(url, capabilities);
 
@@ -69,7 +77,6 @@ public class Android_Grid_Parallel {
 		System.out.println("settings: " + androidDriver.getCapabilities());
 		MobileElement el1 = (MobileElement) androidDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout");
 		el1.click();
-		//androidDriver.hideKeyboard();
 		
 		MobileElement el2 = (MobileElement) androidDriver.findElementById("com.lunchit.android.beta:id/aet_email");
 		
@@ -92,6 +99,7 @@ public class Android_Grid_Parallel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout[2]"))).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("com.android.documentsui:id/icon_thumb"))).click();
