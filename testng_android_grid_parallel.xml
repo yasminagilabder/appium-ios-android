@@ -1,14 +1,14 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Android_Grid_Parallel" parallel="tests" thread-count="1">
+<suite name="Android_Grid_Parallel" parallel="tests" thread-count="2">
    <test name="Test1">
         <parameter name="deviceName" value="Nexus_5_API_22"/>
         <parameter name="UDID" value="emulator-5554"/>
         <parameter name="platformVersion" value="Version_One"/>
         <parameter name="node_port" value="1234"/>
         <classes>
-            <class name="Test.Android_Grid_Parallel">
+            <class name="Test.Android_Grid_Parallel2">
             </class>
         </classes>
     </test>
