@@ -8,7 +8,7 @@
         <parameter name="platformVersion" value="Version_One"/>
         <parameter name="node_port" value="1234"/>
         <classes>
-            <class name="Test.Android_Grid_Parallel2">
+            <class name="Test.Android_Grid_Parallel">
             </class>
         </classes>
     </test>

@@ -1,6 +1,6 @@
 package PageObjects;
 
-public interface ContactSearchPage {
+public interface LoginPage {
 
     void search(String name);
 

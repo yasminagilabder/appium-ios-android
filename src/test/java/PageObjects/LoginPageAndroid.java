@@ -7,20 +7,35 @@ import org.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ContactSearchPageAndroid implements ContactSearchPage {
+public class LoginPageAndroid implements LoginPage {
 
-    public ContactSearchPageAndroid(AppiumDriver driver) {
+    public LoginPageAndroid(AppiumDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     @FindBy(id = "main_search")
-    private MobileElement searchField;
+    private MobileElement loginField;
 
     @FindBy(id = "name")
-    private MobileElement firstSearchResultName;
-
-
+    private MobileElement passwordField;
+    
+    @Override
     public void search(String name) {
+    
+    }
+    
+    @Override
+    public void assertSearchResult(String expectedResult) {
+    
+    }
+    
+    @Override
+    public void navigateToSearchResultDetails() {
+    
+    }
+
+
+  /*  public void setLoginField(String name) {
         searchField.sendKeys(name);
     }
 
@@ -31,5 +46,5 @@ public class ContactSearchPageAndroid implements ContactSearchPage {
     public void navigateToSearchResultDetails() {
         firstSearchResultName.click();
     }
-
+*/
 }
