@@ -79,7 +79,6 @@ public class Android_Grid_Parallel {
 		el1.click();
 		
 		MobileElement el2 = (MobileElement) androidDriver.findElementById("com.lunchit.android.beta:id/aet_email");
-		
 		el2.sendKeys("happyspendit.de.test1@gmail.com");
 		MobileElement el3 = (MobileElement) androidDriver.findElementById("com.lunchit.android.beta:id/aet_password");
 		el3.sendKeys("lindaBrown124!");

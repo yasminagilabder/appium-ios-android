@@ -1,0 +1,18 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="appiumIOS" thread-count="1">
+    <test name="iPhone 11 Pro Max">
+        <parameter name="device_name" value="iPhone"/>
+        <parameter name="wda" value="8100"/>
+        <parameter name="node_port" value="4730"/>
+        <parameter name="deviceName" value="iPhone 11 Pro Max"/>
+        <parameter name="platformVersion" value="13.3"/>
+        <classes>
+            <class name="Test.IOS_Grid_Parallel">
+            </class>
+        </classes>
+    </test>
+
+</suite>
+

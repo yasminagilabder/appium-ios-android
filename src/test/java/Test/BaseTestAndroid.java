@@ -6,23 +6,17 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import screens.LoginScreen;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTestAndroid {
-
-    public WebDriverWait wait;
+    
     public AndroidDriver androidDriver;
     DesiredCapabilities capabilities = new DesiredCapabilities();
-    
-    //private ThreadLocalDriver threadLocalDriver = new ThreadLocalDriver();
-    //Base Screens for all cases
-  /*  protected SplashScreen splashScreen = null;
-    protected TutorialScreen tutorialScreen = null;
-    protected SelectionScreen selectionScreen = null;
-    protected CandidateMainScreen candidateMainScreen = null;*/
     
     @BeforeMethod
     @Parameters({"deviceName", "UDID", "platformVersion", "node_port"})
@@ -59,11 +53,8 @@ public class BaseTestAndroid {
         
         androidDriver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
     }
-    /*@AfterMethod
-    public synchronized void teardown(){
-        ThreadLocalDriver.getTLDriver().quit();
-    }*/
-    @AfterClass
+  
+    @AfterMethod
     public void tearDown() {
         if (androidDriver!=null){
             androidDriver.quit();

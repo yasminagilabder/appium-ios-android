@@ -1,27 +1,30 @@
 package cucumber.steps;
 
-public class BaseSteps {
-	
-	/*protected SplashScreen splashScreen = null;
-	protected TutorialScreen tutorialScreen = null;
-	protected SelectionScreen selectionScreen = null;
-	protected CandidateMainScreen candidateMainScreen = null;
+import Test.BaseTestAndroid;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Parameters;
+import screens.LoginScreen;
+
+public class BaseSteps extends BaseTestAndroid {
 	protected AndroidDriver<MobileElement> driver;
 	protected WebDriverWait wait;
-	
-	//Screen Classes Initialization
+	protected LoginScreen loginScreen = null;
+	//@Parameters({"deviceName"})
 	protected void setupCucumber () {
 		System.out.println("Cucumber Base Test Before-login-test-cucumber");
-		//Get driver to use step files
-		driver = ThreadLocalDriver.getTLDriver();
-		wait = new WebDriverWait(driver, 10);
-		splashScreen = new SplashScreen(driver);
-		tutorialScreen = new TutorialScreen(driver);
-		selectionScreen = new SelectionScreen(driver);
-		candidateMainScreen = new CandidateMainScreen(driver);
+		loginScreen = new LoginScreen(driver);
+	}
+	@Then("I should next page")
+	public void iShouldNextPage() {
 	}
 	
-	protected void teardown(){
-		driver.quit();
-	}*/
+	
+	@Given("I enter (.*) in field (.*)")
+	public void iEnterLoginValueInFieldLogin(String value, String field) {
+		loginScreen.enterLogin(value);
+	}
 }

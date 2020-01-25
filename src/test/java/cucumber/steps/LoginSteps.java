@@ -1,6 +1,6 @@
 package cucumber.steps;
 
-public class LoginSteps extends BaseSteps {
+public class LoginSteps {
 	
 	/*//Instantiations
 	ProfileLoginScreen profileLoginScreen;

@@ -15,8 +15,8 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class IOS_Grid_Parallel {
-
-    AppiumDriver driver;
+    
+    public IOSDriver driver;
     DesiredCapabilities capabilities = new DesiredCapabilities();
 
     @BeforeClass
@@ -24,7 +24,7 @@ public class IOS_Grid_Parallel {
     public void setUp(String deviceName, String platformVersion, String node_port ) throws MalformedURLException {
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "/src/app/iOS");
-        File app = new File(appDir, "LUNCHIT_RC.ipa");
+        File app = new File(appDir, "LUNCHIT_RC.app");
         capabilities.setCapability("app", app.getAbsolutePath());
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("deviceName", deviceName);
@@ -34,19 +34,39 @@ public class IOS_Grid_Parallel {
         System.out.println("url: "+url.toString());
        // capabilities.setCapability("noReset", "true");
         driver = new IOSDriver<MobileElement>(url, capabilities);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     @Test
-    public void advertiseTest() {
+    public void LunchitTest() {
+        
         System.out.println("capabilities: "+capabilities.toString());
+       
+    
+        MobileElement el2 = (MobileElement) driver.findElementByName("E-Mail Adress");
+        el2.sendKeys("happyspendit.de.test1@gmail.com");
+        MobileElement el3 = (MobileElement) driver.findElementByName("Password");
+        el3.sendKeys("lindaBrown124!");
+        MobileElement el4 = (MobileElement) driver.findElementByName("Log In");
+        el4.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    
     }
     @AfterClass
     public void tearDown() {
-        if (driver != null) {
+    /*    if (driver != null) {
             driver.quit();
         } else {
             return;
-        }
+        }*/
     }
 
 }
