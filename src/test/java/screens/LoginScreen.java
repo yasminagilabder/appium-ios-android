@@ -1,27 +1,40 @@
 package screens;
 
+import cucumber.steps.SetUp;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+import util.Context;
+import util.ThreadLocalDriver;
 
-public class LoginScreen extends BaseScreen {
-    public LoginScreen(AndroidDriver driver) {
-        super(driver);
+public class LoginScreen extends BaseScreen{
+    
+   
+    
+    private AppiumDriver driver;
+    WebDriverWait wait;
+    protected SetUp setUp;
+    
+    
+    public LoginScreen(AppiumDriver driver) {
+        this.driver = driver;
+       
     }
-
-    //Mobile Elements
-    String telephoneNumber = "com.isinolsun.app:id/login_phone_number";
-    String loginButton = "com.isinolsun.app:id/login";
-
-
-
-    public void enterLogin (String login) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout"))).click();
+    
+    public void enterLogin (String login) throws InterruptedException {
+        Thread.sleep(1000);
+        driver=ThreadLocalDriver.getTLDriver();
+      /*  MobileElement init = (MobileElement) driver.findElementById("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout");
+        init.click();*/
+       // wait.until(ExpectedConditions.presenceOfElementLocated(By.id("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout"))).click();
         MobileElement elLogin = (MobileElement) driver.findElementById("com.lunchit.android.beta:id/aet_email");
-        wait.until(ExpectedConditions.elementToBeClickable(elLogin)).click();
+        elLogin.click();
+        //wait.until(ExpectedConditions.elementToBeClickable(elLogin)).click();
         
         MobileElement el2 = (MobileElement) driver.findElementById("com.lunchit.android.beta:id/aet_email");
         el2.sendKeys("happyspendit.de.test1@gmail.com");

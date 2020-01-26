@@ -1,9 +1,10 @@
-/Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/Test/IOS_Sample.java
+/Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/cucumber/runners/CucumberRunner.java
 /Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/cucumber/steps/BaseSteps.java
 /Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/PageObjects/LoginPageAndroid.java
 /Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/PageObjects/LoginPage.java
-/Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/cucumber/runners/RunCucumberFeatures.java
 /Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/Test/Android_Grid_Parallel.java
 /Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/Test/IOS_Grid_Parallel.java
 /Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/Test/BaseTestAndroid.java
+/Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/screens/BaseScreen.java
 /Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/cucumber/steps/LoginSteps.java
+/Users/yasminagil/IdeaProjects/spendit-lunchit-appium/spendit-lunchit-appium/src/test/java/screens/LoginScreen.java
