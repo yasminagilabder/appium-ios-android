@@ -3,18 +3,10 @@ package screens;
 import cucumber.steps.SetUp;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
-import util.Context;
 import util.ThreadLocalDriver;
 
 public class LoginScreen extends BaseScreen{
-    
-   
     
     private AppiumDriver driver;
     WebDriverWait wait;
