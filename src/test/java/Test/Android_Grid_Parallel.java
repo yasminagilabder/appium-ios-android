@@ -1,5 +1,6 @@
 package Test;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
@@ -62,6 +63,7 @@ public class Android_Grid_Parallel {
 		}*/
 		URL url = new URL("http://localhost:" + node_port + "/wd/hub");
 		androidDriver = new AndroidDriver(url, capabilities);
+		
 
 		System.out.println("deviceName: " + deviceName);
 		System.out.println("udid: " + UDID);

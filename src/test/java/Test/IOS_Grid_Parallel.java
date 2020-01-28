@@ -4,6 +4,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,8 +16,12 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.File;
-import java.net.MalformedURLException;
+import java.io.IOException;
+
 import java.net.URL;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class IOS_Grid_Parallel {
@@ -24,16 +31,21 @@ public class IOS_Grid_Parallel {
 
     @BeforeClass
     @Parameters({"deviceName","platformVersion","node_port"})
-    public void setUp(String deviceName, String platformVersion, String node_port ) throws MalformedURLException {
+    public void setUp(String deviceName, String platformVersion, String node_port ) throws IOException {
         File classpathRoot = new File(System.getProperty("user.dir"));
         File receiptDir = new File(classpathRoot, "/src/test/resources/receipts/DE_RECEIPT1.jpg");
+       /* byte[] encoded = Base64.encodeBase64(FileUtils.readFileToByteArray(receiptDir.getCanonicalFile()));
+        (AppiumDriver)driver.pushFile("/sdcard/",encoded);*/
+// push the file -- note that it's important it's just the bare basename of the file
+       
         File appDir = new File(classpathRoot, "/src/app/iOS");
         File app = new File(appDir, "LUNCHIT_RC.app");
         capabilities.setCapability("app", app.getAbsolutePath());
+      
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("platformVersion", platformVersion);
-        capabilities.setCapability("automationName", "XCUITest");
+        capabilities.setCapability("automationName","XCUITest");
         capabilities.setCapability(IOSMobileCapabilityType.SEND_KEY_STRATEGY, "grouped");
         capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, "true");
        
@@ -47,9 +59,9 @@ public class IOS_Grid_Parallel {
         URL url = new URL("http://localhost:" + node_port +"/wd/hub");
         System.out.println("url: "+url.toString());
        
-        driver = new IOSDriver<MobileElement>(url, capabilities);
+        driver = new IOSDriver(url, capabilities);
         
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        
         try {
             Thread.sleep(2000);
          
@@ -58,10 +70,22 @@ public class IOS_Grid_Parallel {
         }
     }
     @Test
-    public void LunchitTest() {
+    public void LunchitTest() throws IOException {
+        File classpathRoot = new File(System.getProperty("user.dir"));
+        File receiptDir = new File(classpathRoot, "/src/test/resources/receipts/DE_RECEIPT2.jpg");
+    
+        //receiptDir1.getAbsolutePath()+"/sdcard/DE_RECEIPT1.jp
+       
+        //driver.pushFile("/sdcard1/User/img1.jpg", fileContent);
         
         System.out.println("capabilities: "+capabilities.toString());
+   // driver.executeScript(new String[]{"xcrun", "simctl", "addmedia", deviceUDID, pathToFile + fileName});
     
+    
+       /* String command = "mobile:xcrun simctl addmedia D4A14667-1951-4D09-88B0-B61E490C0311";
+        Map<String, Object> params = new HashMap();
+        params.put("path", receiptDir.getAbsolutePath());
+        Object result = driver.execute(command, params);*/
         WebDriverWait wait = new WebDriverWait(driver, 60 /*timeout in seconds*/);
        
         try {
@@ -69,7 +93,9 @@ public class IOS_Grid_Parallel {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    
+      /*  MobileElement el1 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout");
+        el1.click();
+    */
         MobileElement el2 = (MobileElement) driver.findElementByName("E-Mail Adress");
         el2.clear();
         el2.sendKeys("oscar.izquierdo@spendit.de");
@@ -97,7 +123,11 @@ public class IOS_Grid_Parallel {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("context"+driver.getContext());
+        MobileElement instbug = (MobileElement)driver.findElementByClassName("UITransitionView");
+        instbug.click();
+        
+        System.out.println("clicked");
+       
        
     
     }
