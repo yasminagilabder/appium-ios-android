@@ -34,9 +34,6 @@ public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
     private TestNGCucumberRunner testNGCucumberRunner;
     protected DesiredCapabilities capabilities = new DesiredCapabilities();
     protected AndroidDriver driver;
-    File classpathRoot = new File(System.getProperty("user.dir"));
-    File appDir = new File(classpathRoot, "/src/app/Android");
-    File app = new File(appDir, "app-beta-debug.apk");
     private Context context;
 
    @BeforeClass(alwaysRun = true)

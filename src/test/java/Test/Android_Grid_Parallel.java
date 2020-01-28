@@ -50,17 +50,7 @@ public class Android_Grid_Parallel {
 		capabilities.setCapability("noReset", "false");
 		capabilities.setCapability("resetKeyboard", true);
 		capabilities.setCapability("printPageSourceOnFindFailure", "true");
-		File receiptDir1 = new File(classpathRoot, "/src/test/resources/receipts/DE_RECEIPT1.jpg");
-		//androidDriver.executeScript("adb", "adb"+UDID+"push"+receiptDir1.getAbsolutePath()+"/sdcard/DE_RECEIPT1.jpg");
-		//ProcessBuilder pb = new ProcessBuilder("adb", "-s", UDID, "push", receiptDir1.getAbsolutePath(), "/sdcard/DE_RECEIPT1.jpg");
-	/*	Process pc = pb.start();
-		try {
-			pc.waitFor();
-			androidDriver.exe
-			
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}*/
+		
 		URL url = new URL("http://localhost:" + node_port + "/wd/hub");
 		androidDriver = new AndroidDriver(url, capabilities);
 		
@@ -77,6 +67,12 @@ public class Android_Grid_Parallel {
 	public void testLunchit() throws InterruptedException {
 		File classpathRoot = new File(System.getProperty("user.dir"));
 		System.out.println("settings: " + androidDriver.getCapabilities());
+		File receiptDir = new File(classpathRoot, "/src/test/resources/receipts/DE_RECEIPT1.jpg");
+		try {
+			androidDriver.pushFile("/sdcard/Pictures/DE_RECEIPT1.jpg", Base64.encodeBase64(FileUtils.readFileToByteArray(receiptDir)));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		MobileElement el1 = (MobileElement) androidDriver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout");
 		el1.click();
 		

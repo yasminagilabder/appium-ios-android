@@ -133,11 +133,11 @@ public class IOS_Grid_Parallel {
     }
     @AfterClass
     public void tearDown() {
-    /*    if (driver != null) {
+      if (driver != null) {
             driver.quit();
         } else {
             return;
-        }*/
+        }
     }
 
 }
