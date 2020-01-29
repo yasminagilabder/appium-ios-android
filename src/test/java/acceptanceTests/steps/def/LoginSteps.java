@@ -1,6 +1,42 @@
-package cucumber.steps;
+package acceptanceTests.steps.def;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import screens.LoginScreen;
+import util.ThreadLocalDriver;
 
 public class LoginSteps {
+	
+	LoginScreen loginScreen;
+	
+	public LoginSteps() {
+		loginScreen = new LoginScreen(ThreadLocalDriver.getTLDriver());
+	}
+	
+	@Given("^I enter (.*) in field (.*)$")
+	public void i_enter_value_in_field(String value, String field) throws Exception {
+		if (field.toLowerCase().equals("login")) {
+			
+			loginScreen.enterLogin(value);
+		}else{
+			if (field.toLowerCase().equals("password")){
+				loginScreen.enterPassword(value);
+			}else{
+				throw new Exception("Unknown screen!!!");
+			}
+		}
+	}
+	
+
+	@When("^I click (.*) button$")
+	public void i_click_login_button(String value) throws Throwable {
+		if (value.toLowerCase().equals("login")){
+			loginScreen.clickLogin();
+		}else{
+			throw new Exception("Unknown button!!!");
+		}
+	}
+	
 	
 	/*//Instantiations
 	ProfileLoginScreen profileLoginScreen;

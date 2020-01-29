@@ -1,9 +1,8 @@
-package PageObjects;
+package pageObjects;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -13,10 +12,10 @@ public class LoginPageAndroid implements LoginPage {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @FindBy(id = "main_search")
+    @FindBy(id = "com.lunchit.android.beta:id/aet_email")
     private MobileElement loginField;
 
-    @FindBy(id = "name")
+    @FindBy(id = "com.lunchit.android.beta:id/aet_password")
     private MobileElement passwordField;
     
     @Override

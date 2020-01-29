@@ -8,7 +8,7 @@
         <parameter name="platformVersion" value="10.0.0"/>
         <parameter name="node_port" value="1234"/>
         <classes>
-            <class name="cucumber.runners.CucumberRunnerTest">
+            <class name="acceptanceTests.runners.CucumberRunnerTest">
             </class>
         </classes>
     </test>

@@ -1,8 +1,9 @@
 @wip
 Feature: Login Feature
   
-  Scenario: Login the app successfully as a candidate
+  Scenario: Login the app successfully
   #  Given I am on Login Page
     Given I enter happyspendit.de.test1@gmail.com in field Login
-    #When  I click submit button
+    And I enter lindaBrown124! in field password
+    When  I click login button
     #Then I should next page
