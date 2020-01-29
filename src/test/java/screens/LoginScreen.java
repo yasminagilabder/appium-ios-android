@@ -7,7 +7,7 @@ import util.ThreadLocalDriver;
 
 public class LoginScreen extends BaseScreen{
     
-    private AppiumDriver driver;
+    
     private String email="com.lunchit.android.beta:id/aet_email";
     private String password="com.lunchit.android.beta:id/aet_password";
     private String btnLogin="com.lunchit.android.beta:id/btn_login";
@@ -51,6 +51,7 @@ public class LoginScreen extends BaseScreen{
         sendText(By.id(password),passwordValue);
     }
     public void clickLogin() {
+        
         waitAndClick(By.id(btnLogin));
     }
     
