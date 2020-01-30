@@ -15,6 +15,7 @@ public interface LoginScreen {
 	public void clickLogin() ;
 	
 	public void closeInstBug();
+	
 	public void closeFireBase();
 	
 }

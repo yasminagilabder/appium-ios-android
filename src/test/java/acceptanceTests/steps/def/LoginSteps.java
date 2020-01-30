@@ -13,9 +13,6 @@ import util.ThreadLocalDriver;
 public class LoginSteps {
 	
 	LoginScreen loginScreen;
-	
-	
-	
 	public LoginSteps() {
 		AppiumDriver appiumDriver=ThreadLocalDriver.getTLDriver();
 		if (appiumDriver instanceof AndroidDriver){

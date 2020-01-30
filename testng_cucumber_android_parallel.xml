@@ -1,0 +1,27 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CUCUMBER-ANDROID_Parallel" parallel="tests" thread-count="2">
+    <test name="Nexus">
+        <parameter name="deviceName" value="Nexus_5_API_29"/>
+        <parameter name="UDID" value="emulator-5554"/>
+        <parameter name="platformVersion" value="10.0.0"/>
+        <parameter name="node_port" value="1234"/>
+        <classes>
+            <class name="acceptanceTests.runners.AndroidCucumberRunnerTest">
+            </class>
+        </classes>
+    </test>
+    <test name="Piksel">
+        <parameter name="deviceName" value="Pixel_3_XL_API_29"/>
+        <parameter name="UDID" value="emulator-5554"/>
+        <parameter name="platformVersion" value="8.1.0"/>
+        <parameter name="node_port" value="3456"/>
+        <classes>
+            <class name="acceptanceTests.runners.AndroidCucumberRunnerTest">
+            </class>
+        </classes>
+    </test>
+
+</suite>
+

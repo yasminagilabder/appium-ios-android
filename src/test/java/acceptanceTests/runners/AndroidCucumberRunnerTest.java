@@ -27,7 +27,6 @@ import java.util.concurrent.TimeUnit;
 				"html:target/android_cucumber-reports/reports"}
 )
 
-
 public class AndroidCucumberRunnerTest {
 	private TestNGCucumberRunner testNGCucumberRunner;
 	private AndroidDriver driver;
