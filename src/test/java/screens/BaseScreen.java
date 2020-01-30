@@ -58,6 +58,9 @@ public class BaseScreen {
     protected void sendText (By by, String text) {
          waitAndFindElement(by).sendKeys(text);
     }
+    protected void clearText (By by) {
+        waitAndFindElement(by).clear();
+    }
 
     protected void assertEquals (String actual, String expected) {
         Assert.assertEquals(actual,expected, "Two texts are not equal!" + "Actual: " + actual + " Expected: " + expected);

@@ -34,10 +34,6 @@ public class IOS_Grid_Parallel {
     public void setUp(String deviceName, String platformVersion, String node_port ) throws IOException {
         File classpathRoot = new File(System.getProperty("user.dir"));
         File receiptDir = new File(classpathRoot, "/src/test/resources/receipts/DE_RECEIPT1.jpg");
-       /* byte[] encoded = Base64.encodeBase64(FileUtils.readFileToByteArray(receiptDir.getCanonicalFile()));
-        (AppiumDriver)driver.pushFile("/sdcard/",encoded);*/
-// push the file -- note that it's important it's just the bare basename of the file
-       
         File appDir = new File(classpathRoot, "/src/app/iOS");
         File app = new File(appDir, "LUNCHIT_RC.app");
         capabilities.setCapability("app", app.getAbsolutePath());
