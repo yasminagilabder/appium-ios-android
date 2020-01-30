@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 )
 
 
-public class CucumberRunnerTest {
+public class AndroidCucumberRunnerTest {
 	private TestNGCucumberRunner testNGCucumberRunner;
 	private AndroidDriver driver;
 	private DesiredCapabilities capabilities = new DesiredCapabilities();
