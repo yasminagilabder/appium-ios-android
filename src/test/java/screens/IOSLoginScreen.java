@@ -1,16 +1,15 @@
 package screens;
 
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
 
 public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 	
-	/*private String loginScreenTitleId = "com.lunchit.android.beta:id/start_welcome_text";
+	private String loginScreenTitleId = "Welcome to the largest cafeteria in the world.";
 	
 	private String loginScreenTitle = "Welcome to the largest cafeteria in the world.";
-	*/
+	
 	private String emailField = "E-Mail Adress";
 	
 	private String passwordField = "Password";
@@ -33,24 +32,20 @@ public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 	}
 	
 	public void checkLoginScreenTitle() {
-	
+		sleep(10000);
+		waitVisibility(MobileBy.ByAccessibilityId.id(loginScreenTitleId));
+		assertEquals(getText(MobileBy.ByAccessibilityId.id(loginScreenTitleId)), loginScreenTitle);
 	}
 	
-	/*public void checkLoginScreenTitle () {
-			sleep(10000);
-			waitVisibility(By.id(loginScreenTitleId));
-			assertEquals(getText(By.id(loginScreenTitleId)), loginScreenTitle);
-		}
-		*/
 	public void enterLogin(String login) {
-		By emailElement=By.name(emailField);
+		By emailElement = By.name(emailField);
 		closeInstBug();
 		waitAndClick(emailElement);
 		sendText(emailElement, login);
 	}
 	
 	public void enterPassword(String passwordValue) {
-		By passwordElement=By.name(passwordField);
+		By passwordElement = By.name(passwordField);
 		waitAndClick(passwordElement);
 		sendText(passwordElement, passwordValue);
 	}

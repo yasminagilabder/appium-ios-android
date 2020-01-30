@@ -23,7 +23,6 @@ public class LoginSteps {
 		}else{
 			loginScreen = new IOSLoginScreen((IOSDriver)appiumDriver);
 		}
-		
 	}
 	
 	@Given("^I am in (.*) Screen$")
