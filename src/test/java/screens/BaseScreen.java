@@ -30,7 +30,7 @@ public class BaseScreen {
         driver.findElement(by).click();
     }
 
-    protected void hideKeyboard(){
+    protected void goBack(){
         driver.navigate().back();
     }
 

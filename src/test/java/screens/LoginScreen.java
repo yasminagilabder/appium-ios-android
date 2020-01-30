@@ -1,59 +1,70 @@
 package screens;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
-import util.ThreadLocalDriver;
+import org.openqa.selenium.support.FindBy;
 
-public class LoginScreen extends BaseScreen{
-    
-    
-    private String email="com.lunchit.android.beta:id/aet_email";
-    private String password="com.lunchit.android.beta:id/aet_password";
-    private String btnLogin="com.lunchit.android.beta:id/btn_login";
-    private String firebase ="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout";
-    
-    public LoginScreen(AppiumDriver driver) {
-        
-        
-        super(driver);
-    }
-   
-    public void enterLogin (String login){
-        sleep(1000);
-        waitAndClick(By.xpath(firebase));
-        waitAndClick(By.id(email));
-        sendText(By.id(email),login);
-    }
-    
-    public void enterLogin2 (String login) throws InterruptedException {
-        Thread.sleep(1000);
-        driver=ThreadLocalDriver.getTLDriver();
-        MobileElement init = (MobileElement) driver.findElementById("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout");
-        init.click();
-        MobileElement elLogin = (MobileElement) driver.findElementById("com.lunchit.android.beta:id/aet_email");
-        elLogin.click();
-       
-        MobileElement el2 = (MobileElement) driver.findElementById("com.lunchit.android.beta:id/aet_email");
-        el2.sendKeys("happyspendit.de.test1@gmail.com");
-        
-        
-        MobileElement el3 = (MobileElement) driver.findElementById("com.lunchit.android.beta:id/aet_password");
-        el3.sendKeys("lindaBrown124!");
-        
-        MobileElement el4 = (MobileElement) driver.findElementById("com.lunchit.android.beta:id/btn_login");
-        el4.click();
-        MobileElement close = (MobileElement) driver.findElementById("com.lunchit.android.beta:id/close_happy");
-        close.click();
-    }
-    public void enterPassword (String passwordValue) {
-       waitAndClick(By.id(password));
-        sendText(By.id(password),passwordValue);
-    }
-    public void clickLogin() {
-        
-        waitAndClick(By.id(btnLogin));
-    }
-    
-
+public class LoginScreen extends BaseScreen {
+	
+	private String loginScreenTitleId = "com.lunchit.android.beta:id/start_welcome_text";
+	
+	private String loginScreenTitle = "Welcome to the largest cafeteria in the world.";
+	
+	private String emailField = "com.lunchit.android.beta:id/aet_email";
+	
+	private String passwordField = "com.lunchit.android.beta:id/aet_password";
+	
+	private String btnLogin = "com.lunchit.android.beta:id/btn_login";
+	
+	private String skipInstbug= "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout";
+	
+	private String toggleFirebase = "com.lunchit.android.beta:id/ga_switch";
+	
+	private String closeFirebase = "com.lunchit.android.beta:id/close_happy";
+	
+	
+	public LoginScreen(AppiumDriver driver) {
+		super(driver);
+	}
+	
+	public void checkLoginScreenTitle () {
+		sleep(10000);
+		waitVisibility(By.id(loginScreenTitleId));
+		assertEquals(getText(By.id(loginScreenTitleId)), loginScreenTitle);
+	}
+	
+	public void enterLogin(String login) {
+		sleep(5000);
+		closeInstBug();
+		waitAndClick(By.id(emailField));
+		sendText(By.id(emailField),login);
+		closeInstBug();
+	}
+	
+	public void enterPassword(String passwordValue) {
+		waitAndClick(By.id(passwordField));
+		sendText(By.id(passwordField), passwordValue);
+	}
+	
+	public void clickLogin() {
+		waitAndClick(By.id(btnLogin));
+		closeFireBase();
+	}
+	
+	private void closeInstBug(){
+		if (isElementPresent(By.xpath(skipInstbug))){
+			waitAndClick(By.xpath(skipInstbug));
+			System.out.println("Closing InstaBug screen....");
+		}
+	}
+	private void closeFireBase(){
+		sleep(10000);
+		if (isElementPresent(By.id(toggleFirebase))){
+			waitAndClick(By.id(toggleFirebase));
+			waitAndClick(By.id(closeFirebase));
+			System.out.println("Enable Firebase ....");
+		}
+	}
+	
+	
 }

@@ -6,7 +6,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPageAndroid implements LoginPage {
+public class LoginPageAndroid {
 
     public LoginPageAndroid(AppiumDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
@@ -18,22 +18,7 @@ public class LoginPageAndroid implements LoginPage {
     @FindBy(id = "com.lunchit.android.beta:id/aet_password")
     private MobileElement passwordField;
     
-    @Override
-    public void search(String name) {
-    
-    }
-    
-    @Override
-    public void assertSearchResult(String expectedResult) {
-    
-    }
-    
-    @Override
-    public void navigateToSearchResultDetails() {
-    
-    }
-
-
+ 
   /*  public void setLoginField(String name) {
         searchField.sendKeys(name);
     }
