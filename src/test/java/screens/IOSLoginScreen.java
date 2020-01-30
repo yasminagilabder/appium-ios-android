@@ -46,25 +46,23 @@ public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 		By emailElement=By.name(emailField);
 		closeInstBug();
 		waitAndClick(emailElement);
-		//clearText(emailElement);
 		sendText(emailElement, login);
 	}
 	
 	public void enterPassword(String passwordValue) {
 		By passwordElement=By.name(passwordField);
 		waitAndClick(passwordElement);
-		//clearText(passwordElement);
 		sendText(passwordElement, passwordValue);
 	}
 	
 	public void clickLogin() {
 		waitAndClick(By.name(btnLogin));
-		disabeFaceId();
+		disableFaceId();
 		allowNotifications();
 		closeFireBase();
 	}
 	
-	public void disabeFaceId() {
+	public void disableFaceId() {
 		if (isElementPresent(By.xpath(noFaceIdButton))) {
 			waitAndClick(By.xpath(noFaceIdButton));
 			System.out.println("Disabling Face ID....");
@@ -84,13 +82,6 @@ public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 	
 	public void allowNotifications() {
 		sleep(3000);
-	//	if (isElementPresent(MobileBy.ByAccessibilityId.id(allowNotificationsButton))) {
-		//	click(By.name(allowNotificationsButton));
-			//System.out.println("Allow Notifications ....");
-	//	}
-		/*driver.switchTo().alert().accept();
-		driver.switchTo().alert().dismiss();*/
-		//driver.executeAsyncScript("mobile: alert', {'action': 'accept', 'buttonLabel': 'Allow'}");
 	}
 	
 	

@@ -50,10 +50,6 @@ public class IOSCucumberRunnerTest {
 		capabilities.setCapability(IOSMobileCapabilityType.SEND_KEY_STRATEGY, "grouped");
 		capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, "true");
 		capabilities.setCapability("fullReset", "false");
-		//capabilities.setCapability("app","settings");
-		/*capabilities.setCapability("noReset", "false");*/
-		//capabilities.setCapability("resetKeyboard", false);
-		//capabilities.setCapability("printPageSourceOnFindFailure", "true");
 		URL url = new URL("http://localhost:" + node_port +"/wd/hub");
 		System.out.println("url: "+url.toString());
 		driver = new IOSDriver(url, capabilities);
