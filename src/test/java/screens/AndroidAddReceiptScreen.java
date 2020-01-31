@@ -30,4 +30,5 @@ public class AndroidAddReceiptScreen extends BaseScreen implements AddReceiptScr
 			System.out.println("Clicking add receipt....");
 		}
 	}
+	
 }
