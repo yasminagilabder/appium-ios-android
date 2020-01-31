@@ -18,9 +18,9 @@ import java.util.concurrent.TimeUnit;
 
 
 @CucumberOptions(
-		features = "src/test/resources/features/Login.feature",
+		features = "src/test/resources/features",
 		glue = "acceptanceTests.steps.def"
-		, tags = {"@android"}
+		, tags = {"@android and @e2e"}
 		, monochrome = true
 		, strict = true,
 		plugin = {"pretty",

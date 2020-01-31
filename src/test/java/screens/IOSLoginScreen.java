@@ -31,7 +31,7 @@ public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 		super(driver);
 	}
 	
-	public void checkLoginScreenTitle() {
+	public void checkLoginScreenFormat() {
 		sleep(10000);
 		waitVisibility(MobileBy.ByAccessibilityId.id(loginScreenTitleId));
 		assertEquals(getText(MobileBy.ByAccessibilityId.id(loginScreenTitleId)), loginScreenTitle);

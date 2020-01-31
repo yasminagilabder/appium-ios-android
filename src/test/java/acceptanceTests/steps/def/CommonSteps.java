@@ -1,22 +1,24 @@
 package acceptanceTests.steps.def;
 
+import cucumber.api.java.en.Then;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import screens.AndroidLoginScreen;
-import screens.IOSLoginScreen;
-import screens.LoginScreen;
+import screens.*;
 import util.ThreadLocalDriver;
 
-public class LoginSteps {
+public class CommonSteps {
 	
 	LoginScreen loginScreen;
-	public LoginSteps() {
+	AddReceiptScreen addReceiptScreen;
+	
+	public CommonSteps() {
 		AppiumDriver appiumDriver=ThreadLocalDriver.getTLDriver();
 		if (appiumDriver instanceof AndroidDriver){
 			loginScreen = new AndroidLoginScreen((AndroidDriver)appiumDriver);
+			 addReceiptScreen=new AndroidAddReceiptScreen((AndroidDriver)appiumDriver);
 		}else{
 			loginScreen = new IOSLoginScreen((IOSDriver)appiumDriver);
 		}
@@ -25,7 +27,9 @@ public class LoginSteps {
 	@Given("^I am in (.*) Screen$")
 	public void iAmOnScreen(String screen) throws Exception {
 		if (screen.toLowerCase().equals("login")){
-			loginScreen.checkLoginScreenTitle();
+			loginScreen.checkLoginScreenFormat();
+		}else if (screen.toLowerCase().equals("addreceipt")) {
+			addReceiptScreen.checkScreenFormat();
 		}else {
 			throw new Exception("Unknown screen!!!");
 		}
@@ -45,12 +49,16 @@ public class LoginSteps {
 	}
 	
 	@When("^I click (.*) button$")
-	public void i_click_login_button(String value) throws Throwable {
+	public void i_click_login_button(String value) throws Exception {
 		if (value.toLowerCase().equals("login")) {
 			loginScreen.clickLogin();
-		} else{
+		}else if (value.toLowerCase().equals("addreceipt")) {
+			addReceiptScreen.clickButton("addreceipt");
+		}
+		else{
 			throw new Exception("Unknown button!!!");
 		}
 	}
+
 	
 }
