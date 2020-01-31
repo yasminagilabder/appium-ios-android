@@ -30,8 +30,11 @@ public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 	public IOSLoginScreen(IOSDriver driver) {
 		super(driver);
 	}
-	
-	public void checkLoginScreenFormat() {
+
+
+
+	public void checkLoginScreenFormat(){
+
 		sleep(10000);
 		waitVisibility(MobileBy.ByAccessibilityId.id(loginScreenTitleId));
 		assertEquals(getText(MobileBy.ByAccessibilityId.id(loginScreenTitleId)), loginScreenTitle);
@@ -50,7 +53,7 @@ public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 		sendText(passwordElement, passwordValue);
 	}
 	
-	public void clickLogin() {
+	public void clickLogin(){
 		waitAndClick(By.name(btnLogin));
 		disableFaceId();
 		allowNotifications();

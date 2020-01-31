@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 public interface LoginScreen {
 	
 	
-	public void checkLoginScreenFormat();
+	public void checkLoginScreenFormat ();
 	
 	public void enterLogin(String login) ;
 	

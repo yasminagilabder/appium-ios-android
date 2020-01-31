@@ -20,7 +20,8 @@ import java.util.concurrent.TimeUnit;
 
 
 @CucumberOptions(
-		features = "src/test/resources/features/Android_Login.feature",
+
+		features = "src/test/resources/features/",
 		glue = "acceptanceTests.steps.def"
 		, tags = {"@ios"}
 		, monochrome = true
