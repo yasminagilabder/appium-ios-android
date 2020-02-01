@@ -26,8 +26,12 @@ public class BaseScreen {
     }
 
     protected void click (By by) {
-        waitVisibility(by);
+       // waitVisibility(by);
         driver.findElement(by).click();
+    }
+    
+    protected void hideKeyboard(){
+        driver.hideKeyboard();
     }
 
     protected void goBack(){

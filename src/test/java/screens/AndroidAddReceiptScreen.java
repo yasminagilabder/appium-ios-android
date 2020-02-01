@@ -25,6 +25,7 @@ public class AndroidAddReceiptScreen extends BaseScreen implements AddReceiptScr
 	
 	
 	public void clickButton(String button) {
+		sleep(3000);
 		if (button.toLowerCase().equals("addreceipt")) {
 			waitAndClick(By.id(addReceiptButton));
 			System.out.println("Clicking add receipt....");
