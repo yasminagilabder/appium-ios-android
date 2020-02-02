@@ -23,13 +23,11 @@ public class AndroidAddReceiptScreen extends BaseScreen implements AddReceiptScr
 		assertThat("Background image is not present", isElementPresent(By.id(addReceiptBackground)));
 	}
 	
-	
-	public void clickButton(String button) {
+	public void submit() {
 		sleep(3000);
-		if (button.toLowerCase().equals("addreceipt")) {
-			waitAndClick(By.id(addReceiptButton));
-			System.out.println("Clicking add receipt....");
-		}
+		waitAndClick(By.id(addReceiptButton));
+		System.out.println("Clicking add receipt....");
+		
 	}
 	
 }

@@ -53,7 +53,7 @@ public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 		sendText(passwordElement, passwordValue);
 	}
 	
-	public void clickLogin(){
+	public void submit() {
 		waitAndClick(By.name(btnLogin));
 		disableFaceId();
 		allowNotifications();

@@ -7,8 +7,18 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import screens.*;
 import util.ThreadLocalDriver;
+import util.exception.UnknownButtonException;
+import util.exception.UnknownFieldException;
+import util.exception.UnknownScreenException;
 
 public class BaseSteps {
+	private static final String LOGING = "login";
+	private static final String PASSWORD = "password";
+	private static final String ADD_RECEIPT = "addreceipt";
+	private static final String UNKNOWN_SCREEN = "Unknown screen!!!";
+	private static final String UNKNOWN_FIELD = "Unknown field!!!";
+	private static final String UNKNOWN_BUTTON = "Unknown button!!!";
+	
 	
 	LoginScreen loginScreen;
 	AddReceiptScreen addReceiptScreen;
@@ -26,43 +36,43 @@ public class BaseSteps {
 	@Given("^I am in (.*) Screen$")
 	public void iAmOnScreen(String screen) throws Exception {
 		switch (screen.toLowerCase()) {
-			case "login":
+			case LOGING:
 				loginScreen.checkLoginScreenFormat();
 				break;
-			case "addreceipt":
+			case ADD_RECEIPT:
 				addReceiptScreen.checkScreenFormat();
 				break;
 			default:
-				throw new Exception("Unknown screen!!!");
+				throw new UnknownScreenException(UNKNOWN_SCREEN);
 		}
 	}
+	
 	
 	@Given("^I enter (.*) in field (.*)$")
 	public void i_enter_value_in_field(String value, String field) throws Exception {
 		switch (field.trim().toLowerCase()) {
-			case "login":
+			case LOGING:
 				loginScreen.enterLogin(value);
 				break;
-			case "password":
+			case PASSWORD:
 				loginScreen.enterPassword(value);
 				break;
 			default:
-				
-				throw new Exception("Unknown screen!!!");
+				throw new UnknownFieldException("UNKNOWN_FIELD");
 		}
 	}
 	
 	@When("^I click (.*) button$")
-	public void i_click_button(String value) throws Throwable {
-		switch (value.toLowerCase()) {
-			case "login":
-				loginScreen.clickLogin();
+	public void i_click_login_button(String value) throws Throwable {
+		switch (value.trim().toLowerCase()) {
+			case LOGING:
+				loginScreen.submit();
 				break;
-			case "addreceipt":
-				addReceiptScreen.clickButton(value);
+			case ADD_RECEIPT:
+				addReceiptScreen.submit();
 				break;
 			default:
-				throw new Exception("Unknown button!!!");
+				throw new UnknownButtonException(UNKNOWN_BUTTON);
 		}
 	}
 	

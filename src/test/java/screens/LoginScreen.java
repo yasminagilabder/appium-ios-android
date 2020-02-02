@@ -12,10 +12,7 @@ public interface LoginScreen {
 	
 	public void enterPassword(String passwordValue);
 	
-	public void clickLogin() ;
-	
-	public void closeInstBug();
-	
 	public void closeFireBase();
 	
+	public void submit();
 }
