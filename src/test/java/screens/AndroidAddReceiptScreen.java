@@ -12,7 +12,7 @@ public class AndroidAddReceiptScreen extends BaseScreen implements AddReceiptScr
 	private String totalReceipt = "com.lunchit.android.beta:id/totalReceipt";
 	private String totalMoney = "com.lunchit.android.beta:id/totalMoney";
 	private String addReceiptButton = "com.lunchit.android.beta:id/addReceipt";
-	
+	private String closeHelp = "com.lunchit.android.beta:id/btn_close";
 	
 	public AndroidAddReceiptScreen(AndroidDriver driver) {
 		super(driver);
@@ -27,6 +27,8 @@ public class AndroidAddReceiptScreen extends BaseScreen implements AddReceiptScr
 		sleep(3000);
 		waitAndClick(By.id(addReceiptButton));
 		System.out.println("Clicking add receipt....");
+		waitAndClick(By.id(closeHelp));
+		System.out.println("Closing help window....");
 		
 	}
 	
