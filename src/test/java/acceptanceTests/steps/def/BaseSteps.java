@@ -3,6 +3,9 @@ package acceptanceTests.steps.def;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import screens.*;
@@ -22,6 +25,20 @@ public class BaseSteps {
 	
 	LoginScreen loginScreen;
 	AddReceiptScreen addReceiptScreen;
+	
+	@After()
+	public void afterScenario(Scenario scenario) {
+		
+		AppiumDriver appiumDriver = ThreadLocalDriver.getTLDriver();
+		appiumDriver.closeApp();
+	}
+	
+	@Before()
+	public void beforeScenario(Scenario scenario) {
+		
+		AppiumDriver appiumDriver = ThreadLocalDriver.getTLDriver();
+		appiumDriver.launchApp();
+	}
 	
 	public BaseSteps() {
 		AppiumDriver appiumDriver = ThreadLocalDriver.getTLDriver();
