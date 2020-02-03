@@ -1,8 +1,6 @@
-package screens;
+package screens.interfaces;
 
-public interface AddReceiptScreen {
-	
+public interface CommonScreen {
 	public void checkScreenFormat();
 	public void submit();
-	
 }

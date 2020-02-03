@@ -1,4 +1,4 @@
-package util;
+package util.driver;
 
 import io.appium.java_client.AppiumDriver;
 

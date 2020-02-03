@@ -8,8 +8,9 @@ Feature: Android Login Feature
     And  I enter <password> in field password
     When  I click login button
   
-    Then I am in addReceipt Screen
-    And I click addReceipt button
+    Then I am in AddReceipt Screen
+    And I click AddReceipt button
+    When I click Gallery button
     Examples:
       | login                              | password       |
       | happyspendit.de.test1@gmail.com    | lindaBrown124! |

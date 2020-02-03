@@ -9,7 +9,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
-import util.ThreadLocalDriver;
+import util.driver.ThreadLocalDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @CucumberOptions(
 		features = "src/test/resources/features",
 		glue = "acceptanceTests.steps.def"
-		, tags = {"@android"}
+		, tags = {"@android and @e2e"}
 		, monochrome = true
 		, strict = true,
 		plugin = {"pretty",

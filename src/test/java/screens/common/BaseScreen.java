@@ -1,7 +1,9 @@
-package screens;
+package screens.common;
 
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -49,6 +51,12 @@ public class BaseScreen {
 
     protected WebElement waitAndFindElement (By by) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+    protected void clickImage (String b64Template) {
+        WebElement me=driver.findElement(MobileBy.image(b64Template));
+        System.out.println("break point");
+        me.click();
+      
     }
 
     protected String getText(By by) {

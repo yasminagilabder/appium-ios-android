@@ -1,8 +1,10 @@
-package screens;
+package screens.ios;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
+import screens.common.BaseScreen;
+import screens.interfaces.LoginScreen;
 
 public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 	
@@ -33,7 +35,7 @@ public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 
 
 
-	public void checkLoginScreenFormat(){
+	public void checkScreenFormat(){
 
 		sleep(10000);
 		waitVisibility(MobileBy.ByAccessibilityId.id(loginScreenTitleId));

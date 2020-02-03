@@ -1,12 +1,11 @@
-package screens;
+package screens.android;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
+import screens.common.BaseScreen;
+import screens.interfaces.LoginScreen;
 
-public class AndroidLoginScreen extends BaseScreen implements LoginScreen  {
+public class AndroidLoginScreen extends BaseScreen implements LoginScreen {
 	
 	private String emailField = "com.lunchit.android.beta:id/aet_email";
 	
@@ -26,7 +25,7 @@ public class AndroidLoginScreen extends BaseScreen implements LoginScreen  {
 	}
 	
 	
-	public void checkLoginScreenFormat() {
+	public void checkScreenFormat() {
 		sleep(10000);
 		waitVisibility(By.id(emailField));
 		waitVisibility(By.id(passwordField));
