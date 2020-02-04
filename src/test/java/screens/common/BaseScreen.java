@@ -54,9 +54,13 @@ public class BaseScreen {
     }
     protected void clickImage (String b64Template) {
         WebElement me=driver.findElement(MobileBy.image(b64Template));
-        System.out.println("break point");
         me.click();
       
+    }
+    protected void waitAndClickbyAccessibility (String accessibilityId) {
+        WebElement we=driver.findElementByAccessibilityId(accessibilityId);
+        we.click();
+        
     }
 
     protected String getText(By by) {

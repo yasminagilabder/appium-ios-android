@@ -59,6 +59,7 @@ public class AndroidCucumberRunnerTest {
 		File receiptDir = new File(classpathRoot, "/src/test/resources/receipts/DE_RECEIPT1.jpg");
 		try {
 			driver.pushFile("/sdcard/Pictures/DE_RECEIPT1.jpg", Base64.encodeBase64(FileUtils.readFileToByteArray(receiptDir)));
+			System.out.println("Copying receipt into Emulator...");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
