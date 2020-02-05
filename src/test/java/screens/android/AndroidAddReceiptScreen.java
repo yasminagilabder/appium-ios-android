@@ -1,5 +1,6 @@
 package screens.android;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import screens.common.BaseScreen;
@@ -15,8 +16,10 @@ public class AndroidAddReceiptScreen extends BaseScreen implements AddReceiptScr
 	private String totalMoney = "com.lunchit.android.beta:id/totalMoney";
 	private String addReceiptButton = "com.lunchit.android.beta:id/addReceipt";
 	private String closeHelp = "com.lunchit.android.beta:id/btn_close";
+	private String receiptLink = "com.lunchit.android.beta:id/receiptsContainer";
 	
-	public AndroidAddReceiptScreen(AndroidDriver driver) {
+
+	public AndroidAddReceiptScreen(AppiumDriver driver) {
 		super(driver);
 	}
 	
@@ -35,6 +38,10 @@ public class AndroidAddReceiptScreen extends BaseScreen implements AddReceiptScr
 		waitAndClick(By.id(closeHelp));
 		System.out.println("Closing help window....");
 		
+	}
+	
+	public void clickReceiptsLink() {
+	waitAndClick(By.id(receiptLink));
 	}
 	
 }

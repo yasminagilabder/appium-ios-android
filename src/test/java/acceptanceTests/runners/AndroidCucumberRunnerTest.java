@@ -19,10 +19,10 @@ import java.util.concurrent.TimeUnit;
 
 @CucumberOptions(
 		features = "src/test/resources/features",
-		glue = "acceptanceTests.steps.def"
-		, tags = {"@android and @e2e"}
-		, monochrome = true
-		, strict = true,
+		glue = {"acceptanceTests.steps.def"},
+		tags = {"@android and @e2e"},
+		monochrome = true,
+		strict = true,
 		plugin = {"pretty",
 				"html:target/android_cucumber-reports/reports"}
 )

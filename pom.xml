@@ -30,15 +30,15 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
+                <!--<configuration>
                     <suiteXmlFiles>
                         <suiteXmlFiles>
-                            <!-- pass testng.xml files as argument from command line -->
-                            <!--suppress UnresolvedMavenProperty -->
+                            &lt;!&ndash; pass testng.xml files as argument from command line &ndash;&gt;
+                            &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;
                             <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
                         </suiteXmlFiles>
                     </suiteXmlFiles>
-                </configuration>
+                </configuration>-->
             </plugin>
         </plugins>
     </build>

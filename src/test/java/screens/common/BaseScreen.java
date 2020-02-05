@@ -4,6 +4,7 @@ package screens.common;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -81,7 +82,9 @@ public class BaseScreen {
     protected void waitVisibility (By by) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
-
+   
+    
+    
     protected void sleep (long time) {
         try {
             Thread.sleep(time);
