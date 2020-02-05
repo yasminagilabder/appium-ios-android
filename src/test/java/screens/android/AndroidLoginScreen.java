@@ -49,7 +49,7 @@ public class AndroidLoginScreen extends BaseScreen implements LoginScreen {
 	}
 	
 	public void closeFireBase(){
-		sleep(10000);
+		sleep(8000);
 		if (isElementPresent(By.id(toggleFirebase))){
 			waitAndClick(By.id(toggleFirebase));
 			waitAndClick(By.id(closeFirebase));

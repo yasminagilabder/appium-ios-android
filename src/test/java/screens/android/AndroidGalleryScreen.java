@@ -35,7 +35,11 @@ public class AndroidGalleryScreen extends BaseScreen implements GalleryScreen {
 		System.out.println("Clicking pickFromGalleryButton....");
 		sleep(4000);
 		waitAndClick(By.id(galleryThumb));
-		waitAndClickbyAccessibility(openButton);
+		sleep(4000);
+		
+		/*if (waitByAccessibility(openButton)!=null){
+			waitByAccessibility(openButton).click();
+		}*/
 		System.out.println("Selecting first receipt from gallery....");
 		
 	}

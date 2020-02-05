@@ -34,12 +34,13 @@ Feature: Android Login Feature
     Given I click CurrentMonth Link
     
     Then I am in EditReceipt Screen
-    Given I click ShowReceipt button
+    When I click ShowReceipt button
     
     And I click Delete button
     And I click Done button
     
-    Then I click LogOut Link
+    And I click LogOut Link
+    Then I am in Login Screen
     
    
     

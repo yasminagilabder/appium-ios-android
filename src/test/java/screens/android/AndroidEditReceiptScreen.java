@@ -61,7 +61,7 @@ public class AndroidEditReceiptScreen extends BaseScreen implements EditReceiptS
 		waitAndClick(By.id(showReceiptButton));
 		System.out.println("Showing receipt....");
 		sleep(10000);
-		waitAndClickbyAccessibility(navigateUpButton);
+		waitByAccessibility(navigateUpButton).click();
 	}
 	
 	public void clickSideMenu() {

@@ -2,10 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="CUCUMBER-ANDROID_Parallel" parallel="tests" thread-count="2">
-    <test name="Nexus">
-        <parameter name="deviceName" value="Nexus_5_API_29"/>
+    <test name="Test">
+        <parameter name="deviceName" value="Nexus S API 22"/>
         <parameter name="UDID" value="emulator-5554"/>
-        <parameter name="platformVersion" value="10.0.0"/>
+        <parameter name="platformVersion" value="5.1.0"/>
         <parameter name="node_port" value="1234"/>
         <classes>
             <class name="acceptanceTests.runners.AndroidCucumberRunnerTest">

@@ -58,9 +58,9 @@ public class BaseScreen {
         me.click();
       
     }
-    protected void waitAndClickbyAccessibility (String accessibilityId) {
-        WebElement we=driver.findElementByAccessibilityId(accessibilityId);
-        we.click();
+    protected WebElement waitByAccessibility (String accessibilityId) {
+        return driver.findElementByAccessibilityId(accessibilityId);
+        
         
     }
 
@@ -71,6 +71,8 @@ public class BaseScreen {
     protected void sendText (By by, String text) {
          waitAndFindElement(by).sendKeys(text);
     }
+    
+   
     protected void clearText (By by) {
         waitAndFindElement(by).clear();
     }

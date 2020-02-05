@@ -51,6 +51,7 @@ public class AndroidCucumberRunnerTest {
 		capabilities.setCapability("fullReset", "true");
 		capabilities.setCapability("noReset", "false");
 		capabilities.setCapability("resetKeyboard", true);
+		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("printPageSourceOnFindFailure", "true");
 		
 		URL url = new URL("http://localhost:" + node_port + "/wd/hub");
