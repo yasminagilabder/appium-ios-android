@@ -19,7 +19,7 @@
         <parameter name="deviceName" value="iPhone 11 Pro Max"/>
         <parameter name="platformVersion" value="13.3"/>
         <classes>
-            <class name="acceptanceTests.runners.IOSCucumberRunnerTest">
+            <class name="acceptanceTests.runners.AndroidCucumberRunnerTest">
             </class>
         </classes>
     </test>
