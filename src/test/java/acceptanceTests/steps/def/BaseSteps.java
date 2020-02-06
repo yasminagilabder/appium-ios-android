@@ -3,6 +3,7 @@ package acceptanceTests.steps.def;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
@@ -71,12 +72,12 @@ public class BaseSteps {
 		}
 	}
 	
-	/*@After()
+	@After()
 	public void afterScenario(Scenario scenario) {
 		
 		AppiumDriver appiumDriver = ThreadLocalDriver.getTLDriver();
 		appiumDriver.closeApp();
-	}*/
+	}
 	
 	@Before()
 	public void beforeScenario(Scenario scenario) {
