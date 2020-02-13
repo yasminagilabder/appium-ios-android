@@ -5,6 +5,7 @@ import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
 import screens.common.BaseScreen;
 import screens.interfaces.LoginScreen;
+import util.category.Category;
 
 public class IOSLoginScreen extends BaseScreen implements LoginScreen {
 	

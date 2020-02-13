@@ -1,7 +1,8 @@
 package screens.interfaces;
 
-public interface AllReceiptsScreen extends CommonScreen {
-	
+public interface AllReceiptsScreen{
+	public void submit();
+	void checkScreenFormat();
 	void selectCurrentMonth();
 	void selectLastReceipt();
 	

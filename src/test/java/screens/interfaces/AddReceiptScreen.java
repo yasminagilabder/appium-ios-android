@@ -1,7 +1,8 @@
 package screens.interfaces;
 
-public interface AddReceiptScreen extends CommonScreen {
-	
+public interface AddReceiptScreen  {
+	void checkScreenFormat();
 	void clickReceiptsLink();
+	public void submit();
 	
 }

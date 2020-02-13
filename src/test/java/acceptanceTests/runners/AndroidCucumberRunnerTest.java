@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @CucumberOptions(
 		features = "src/test/resources/features",
 		glue = {"acceptanceTests.steps.def"},
-		tags = {"@android and @e2e"},
+		tags = {"@wip"},
 		monochrome = true,
 		strict = true,
 		plugin = {"pretty",
@@ -72,7 +72,6 @@ public class AndroidCucumberRunnerTest {
 		ThreadLocalDriver.setTLDriver(driver);
 		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
 	}
-
 	
 	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
 	public void scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) throws Throwable {

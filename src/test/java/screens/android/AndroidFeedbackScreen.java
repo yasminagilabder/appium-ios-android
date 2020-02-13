@@ -4,7 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import screens.common.BaseScreen;
 import screens.interfaces.FeedbackScreen;
-import screens.interfaces.RefundScreen;
+import util.category.Category;
 
 public class AndroidFeedbackScreen extends BaseScreen implements FeedbackScreen {
 	
@@ -13,12 +13,9 @@ public class AndroidFeedbackScreen extends BaseScreen implements FeedbackScreen 
 	private String dilikeLogo="com.lunchit.android.beta:id/dontLikeFeedback";
 	private String closeLogo="com.lunchit.android.beta:id/closeFeedback";
 	
-	
-	
 	public AndroidFeedbackScreen(AndroidDriver driver) {
 		super(driver);
 	}
-	
 	
 	@Override
 	public void checkScreenFormat() {
@@ -27,7 +24,6 @@ public class AndroidFeedbackScreen extends BaseScreen implements FeedbackScreen 
 		waitVisibility(By.id(dilikeLogo));
 	
 	}
-	
 	@Override
 	public void submit() {
 		waitAndClick(By.id(closeLogo));

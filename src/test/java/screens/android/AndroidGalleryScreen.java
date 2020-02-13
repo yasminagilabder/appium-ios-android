@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import screens.common.BaseScreen;
 import screens.interfaces.GalleryScreen;
+import util.category.Category;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 

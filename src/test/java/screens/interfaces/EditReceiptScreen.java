@@ -1,9 +1,14 @@
 package screens.interfaces;
 
-public interface EditReceiptScreen extends CommonScreen {
+public interface EditReceiptScreen {
 	
 	void deleteReceipt();
+	
 	void updateAmount(String amount);
+	
 	void viewReceipt();
-	 void clickSideMenu();
+	
+	void clickSideMenu();
+	
+	void checkScreenFormat();
 }

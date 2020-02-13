@@ -4,7 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import screens.common.BaseScreen;
 import screens.interfaces.RefundScreen;
-import screens.interfaces.UpdateReceiptScreen;
+import util.category.Category;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -16,7 +16,6 @@ public class AndroidRefundScreen extends BaseScreen implements RefundScreen {
 	private String doneButton="com.lunchit.android.beta:id/done_button";
 	private String addButton="com.lunchit.android.beta:id/add_button";
 	
-	
 	public AndroidRefundScreen(AndroidDriver driver) {
 		super(driver);
 	}
@@ -27,13 +26,15 @@ public class AndroidRefundScreen extends BaseScreen implements RefundScreen {
 		sleep(10000);
 		waitVisibility(By.id(animationLogo));
 		waitVisibility(By.id(refundAmount));
-	
 	}
 	
-	@Override
-	public void submit() {
+	public void done() {
 		waitAndClick(By.id(doneButton));
 		System.out.println("done button clicked...");
+	}
 	
+	public void addNew() {
+		waitAndClick(By.id(addButton));
+		System.out.println("add new button clicked...");
 	}
 }

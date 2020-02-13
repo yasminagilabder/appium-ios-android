@@ -1,9 +1,10 @@
 package screens.interfaces;
 
-public interface FeedbackScreen extends CommonScreen {
-	
+public interface FeedbackScreen {
+	void checkScreenFormat();
 	void like();
 	void dislike();
+	public void submit();
 	
 	
 }

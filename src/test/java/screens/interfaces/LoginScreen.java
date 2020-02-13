@@ -1,12 +1,15 @@
 package screens.interfaces;
 
-public interface LoginScreen extends CommonScreen{
+public interface LoginScreen {
 	
-	public void enterLogin(String login) ;
+	void checkScreenFormat();
 	
-	public void enterPassword(String passwordValue);
+	void enterLogin(String login);
 	
-	public void closeFireBase();
+	void enterPassword(String passwordValue);
+	
+	void closeFireBase();
+	public void submit();
 	
 	
 }

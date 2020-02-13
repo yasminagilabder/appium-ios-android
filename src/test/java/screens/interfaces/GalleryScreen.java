@@ -1,7 +1,7 @@
 package screens.interfaces;
 
-public interface GalleryScreen extends CommonScreen {
-	
+public interface GalleryScreen{
 	void verify();
-
+	void checkScreenFormat();
+	public void submit();
 }

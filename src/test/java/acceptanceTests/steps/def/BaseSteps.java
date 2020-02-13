@@ -12,11 +12,9 @@ import io.cucumber.java.en.When;
 import screens.android.*;
 import screens.interfaces.*;
 import screens.ios.IOSLoginScreen;
+import util.category.Category;
 import util.driver.ThreadLocalDriver;
-import util.exception.UnknownButtonException;
-import util.exception.UnknownFieldException;
-import util.exception.UnknownLinkException;
-import util.exception.UnknownScreenException;
+import util.exception.*;
 
 public class BaseSteps {
 	private static final String LOGGING = "login";
@@ -26,13 +24,16 @@ public class BaseSteps {
 	private static final String VERIFY = "verifyreceipt";
 	private static final String UPDATE_RECEIPT = "updatereceipt";
 	private static final String SUBMIT_RECEIPT = "submitreceipt";
-	
-	private static final String ALLRECEIPTS = "allreceipts";
+	private static final String ALL_RECEIPTS = "allreceipts";
 	private static final String CURRENT_MONTH = "currentmonth";
+	private static final String CATEGORY = "category";
+	private static final String CATEGORY1_BUTTON = "category1";
+	private static final String CATEGORY2_BUTTON = "category2";
 	
 	private static final String RECEIPT = "receipt";
 	private static final String REFUND = "refund";
 	private static final String DONE = "done";
+	private static final String ADD_NEW = "addnew";
 	private static final String FEEDBACK = "feedback";
 	private static final String CLOSE = "close";
 	private static final String LAST_RECEIPT = "lastreceipt";
@@ -45,6 +46,7 @@ public class BaseSteps {
 	private static final String UNKNOWN_FIELD = "Unknown field!!!";
 	private static final String UNKNOWN_LINK = "Unknown link!!";
 	private static final String UNKNOWN_BUTTON = "Unknown button!!!";
+	private static final String UNKNOWN_CATEGORY = "Unknown Category!!!";
 	
 	
 	LoginScreen loginScreen;
@@ -55,18 +57,24 @@ public class BaseSteps {
 	FeedbackScreen feedbackScreen;
 	AllReceiptsScreen allReceiptsScreen;
 	EditReceiptScreen editReceiptScreen;
+	CategoryScreen categoryScreen;
+	EditReceiptCategoryScreen editReceiptCategoryScreen;
+	
 	
 	public BaseSteps() {
 		AppiumDriver appiumDriver = ThreadLocalDriver.getTLDriver();
 		if (appiumDriver instanceof AndroidDriver) {
 			loginScreen = new AndroidLoginScreen((AndroidDriver) appiumDriver);
-			addReceiptScreen = new AndroidAddReceiptScreen((AndroidDriver) appiumDriver);
+			addReceiptScreen = new AndroidAddReceiptScreen(appiumDriver);
 			galleryScreen = new AndroidGalleryScreen(appiumDriver);
 			updateReceiptScreen = new AndroidUpdateReceiptScreen((AndroidDriver) appiumDriver);
 			refundScreen = new AndroidRefundScreen((AndroidDriver) appiumDriver);
 			feedbackScreen = new AndroidFeedbackScreen((AndroidDriver) appiumDriver);
 			allReceiptsScreen = new AndroidAllReceiptsScreen((AndroidDriver) appiumDriver);
 			editReceiptScreen = new AndroidEditReceiptScreen((AndroidDriver) appiumDriver);
+			categoryScreen = new AndroidCategoryScreen(appiumDriver);
+			editReceiptCategoryScreen=new AndroidEditReceiptCatScreen ((AndroidDriver) appiumDriver);
+			
 		} else {
 			loginScreen = new IOSLoginScreen((IOSDriver) appiumDriver);
 		}
@@ -75,8 +83,8 @@ public class BaseSteps {
 	@After()
 	public void afterScenario(Scenario scenario) {
 		
-		AppiumDriver appiumDriver = ThreadLocalDriver.getTLDriver();
-		appiumDriver.closeApp();
+		/*AppiumDriver appiumDriver = ThreadLocalDriver.getTLDriver();
+		appiumDriver.closeApp();*/
 	}
 	
 	@Before()
@@ -107,11 +115,14 @@ public class BaseSteps {
 			case FEEDBACK:
 				feedbackScreen.checkScreenFormat();
 				break;
-			case ALLRECEIPTS:
+			case ALL_RECEIPTS:
 				allReceiptsScreen.checkScreenFormat();
 				break;
 			case EDIT_RECEIPT:
 				editReceiptScreen.checkScreenFormat();
+				break;
+			case CATEGORY:
+				categoryScreen.checkScreenFormat();
 				break;
 			
 			default:
@@ -153,7 +164,10 @@ public class BaseSteps {
 				updateReceiptScreen.submit();
 				break;
 			case DONE:
-				refundScreen.submit();
+				refundScreen.done();
+				break;
+			case ADD_NEW:
+				refundScreen.addNew();
 				break;
 			case CLOSE:
 				feedbackScreen.submit();
@@ -164,7 +178,12 @@ public class BaseSteps {
 			case SHOW_RECEIPT:
 				editReceiptScreen.viewReceipt();
 				break;
-			
+			case CATEGORY1_BUTTON:
+				categoryScreen.submit(Category.CATEGORY1);
+				break;
+			case CATEGORY2_BUTTON:
+				categoryScreen.submit(Category.CATEGORY2);
+				break;
 			default:
 				throw new UnknownButtonException(UNKNOWN_BUTTON);
 		}
@@ -175,11 +194,10 @@ public class BaseSteps {
 		
 		switch (field.trim().toLowerCase()) {
 			case UPDATE_AMOUNT:
-				updateReceiptScreen.updateAmount(amount);
+				updateReceiptScreen.updateAmount(amount.trim());
 				break;
 			default:
 				throw new UnknownFieldException(UNKNOWN_FIELD);
-			
 		}
 	}
 	
@@ -202,5 +220,22 @@ public class BaseSteps {
 			default:
 				throw new UnknownLinkException(UNKNOWN_LINK);
 		}
+	}
+	
+	@Then("I am in EditReceipt screen for Category: {int}")
+	public void iAmInEditReceiptScreenForCategory(int cat) throws UnknownCategoryException {
+		
+		if (cat==1){
+			editReceiptCategoryScreen.checkScreenFormat();
+			editReceiptCategoryScreen.checkCategoryScreen(Category.CATEGORY1);
+		}else if (cat==2){
+			editReceiptCategoryScreen.checkScreenFormat();
+			editReceiptCategoryScreen.checkCategoryScreen(Category.CATEGORY2);
+		}else{
+			throw new UnknownCategoryException(UNKNOWN_CATEGORY);
+		}
+		
+		
+		
 	}
 }

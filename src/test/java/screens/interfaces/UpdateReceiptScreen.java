@@ -1,9 +1,9 @@
 package screens.interfaces;
 
-import org.openqa.selenium.By;
-
-public interface UpdateReceiptScreen extends CommonScreen {
+public interface UpdateReceiptScreen{
 	
-	public void updateAmount(String amount);
-
+	void updateAmount(String amount);
+	void checkScreenFormat();
+	public void submit();
+	
 }

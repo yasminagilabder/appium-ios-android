@@ -4,6 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import screens.common.BaseScreen;
 import screens.interfaces.LoginScreen;
+import util.category.Category;
 
 public class AndroidLoginScreen extends BaseScreen implements LoginScreen {
 	
@@ -40,7 +41,6 @@ public class AndroidLoginScreen extends BaseScreen implements LoginScreen {
 	public void enterPassword(String password) {
 		sendText(By.id(passwordField), password);
 	}
-	
 	
 	public void submit() {
 		waitAndClick(By.id(btnLogin));

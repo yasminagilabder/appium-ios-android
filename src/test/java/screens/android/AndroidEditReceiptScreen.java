@@ -2,10 +2,9 @@ package screens.android;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import screens.common.BaseScreen;
 import screens.interfaces.EditReceiptScreen;
-import screens.interfaces.UpdateReceiptScreen;
+import util.category.Category;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -36,7 +35,6 @@ public class AndroidEditReceiptScreen extends BaseScreen implements EditReceiptS
 	public void submit() {
 		waitAndClick(By.id(editButton));
 		System.out.println("Save edited receipt...");
-		
 	}
 	
 	@Override
@@ -45,7 +43,6 @@ public class AndroidEditReceiptScreen extends BaseScreen implements EditReceiptS
 		waitAndClick(By.id(deleteReceiptButton));
 		sleep(3000);
 		waitAndClick(By.id(confirmDeleteReceiptButton));
-		
 	}
 	
 	public void updateAmount(String amount) {
@@ -53,7 +50,6 @@ public class AndroidEditReceiptScreen extends BaseScreen implements EditReceiptS
 		clearText(By.id(amountValue));
 		sendText(By.id(amountValue),amount+"00");
 		System.out.println("Receipt updated with correct amount....");
-		
 	}
 	
 	@Override

@@ -1,10 +1,10 @@
 package screens.android;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import screens.common.BaseScreen;
 import screens.interfaces.AddReceiptScreen;
+import util.category.Category;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -35,7 +35,8 @@ public class AndroidAddReceiptScreen extends BaseScreen implements AddReceiptScr
 		sleep(3000);
 		waitAndClick(By.id(addReceiptButton));
 		System.out.println("Clicking add receipt....");
-		waitAndClick(By.id(closeHelp));
+		waitVisibility(By.id(closeHelp));
+		click(By.id(closeHelp));
 		System.out.println("Closing help window....");
 		
 	}

@@ -4,7 +4,7 @@
 <suite name="Android_Cucumber">
     <test name="Test">
         <parameter name="deviceName" value="Pixel 3 XL API 29"/>
-        <parameter name="UDID" value="emulator-5556"/>
+        <parameter name="UDID" value="emulator-5554"/>
         <parameter name="platformVersion" value="10.0.0"/>
         <parameter name="node_port" value="3456"/>
         <classes>

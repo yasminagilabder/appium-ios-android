@@ -1,28 +1,27 @@
 package screens.android;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
 import screens.common.BaseScreen;
 import screens.interfaces.UpdateReceiptScreen;
-
-import java.time.Duration;
+import util.category.Category;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AndroidUpdateReceiptScreen extends BaseScreen implements UpdateReceiptScreen {
 	
 	
-	private String amountValue = "com.lunchit.android.beta:id/amountValue";
+	public String amountValue = "com.lunchit.android.beta:id/amountValue";
 	private String dateValue = "com.lunchit.android.beta:id/dateValue";
 	private String legalTermsButton = "com.lunchit.android.beta:id/legalSwitch";
 	private String submitButton = "com.lunchit.android.beta:id/submitButton";
 	private AndroidDriver androidDriver;
+	
 	
 	public AndroidUpdateReceiptScreen(AndroidDriver driver) {
 		super(driver);
@@ -38,7 +37,6 @@ public class AndroidUpdateReceiptScreen extends BaseScreen implements UpdateRece
 	public void submit() {
 		waitAndClick(By.id(submitButton));
 		System.out.println("Submit receipt...");
-		
 	}
 	
 	@Override
@@ -48,12 +46,15 @@ public class AndroidUpdateReceiptScreen extends BaseScreen implements UpdateRece
 		sendText(By.id(amountValue), amount + "00");
 		androidDriver.findElement(By.id(amountValue)).click();
 		System.out.println("Receipt updated with correct amount....");
-		swipingVertical();
-		
-		waitAndClick(By.id(legalTermsButton));
-		System.out.println("Legal terms accepted...");
-		
+		//swipingVertical();
+		WebElement element=waitAndFindElement(By.id(legalTermsButton));
+		if (element.getAttribute("checked").equals("false")){
+			waitAndClick(By.id(legalTermsButton));
+			System.out.println("Legal terms accepted...");
+		}
 	}
+	
+	
 	public void swipingVertical()  {
 		sleep(8000);
 		//Get the size of screen.
@@ -73,8 +74,37 @@ public class AndroidUpdateReceiptScreen extends BaseScreen implements UpdateRece
 		new TouchAction(androidDriver).press(PointOption.point(new Point(startx, starty))).moveTo(PointOption.point(new Point(starty, endy))).release().perform();
 		//Swipe from Top to Bottom.
 		
-		
 	}
 	
+	public String getAmountValue() {
+		return amountValue;
+	}
 	
+	public void setAmountValue(String amountValue) {
+		this.amountValue = amountValue;
+	}
+	
+	public String getDateValue() {
+		return dateValue;
+	}
+	
+	public void setDateValue(String dateValue) {
+		this.dateValue = dateValue;
+	}
+	
+	public String getLegalTermsButton() {
+		return legalTermsButton;
+	}
+	
+	public void setLegalTermsButton(String legalTermsButton) {
+		this.legalTermsButton = legalTermsButton;
+	}
+	
+	public String getSubmitButton() {
+		return submitButton;
+	}
+	
+	public void setSubmitButton(String submitButton) {
+		this.submitButton = submitButton;
+	}
 }
