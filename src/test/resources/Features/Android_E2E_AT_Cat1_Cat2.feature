@@ -14,9 +14,9 @@ Feature: Android Login Feature
     When I click verifyReceipt button
     Then I am in Category Screen
     When I click Category1 button
-    
+
    # Then I am in EditReceipt screen for Category: 2
-    
+
     Given I update Amount to 2
     When I click SubmitReceipt button
     Then I am in Refund Screen
@@ -25,12 +25,12 @@ Feature: Android Login Feature
     When I click verifyReceipt button
     Then I am in Category Screen
     When I click Category2 button
-  
+
     Given I update Amount to 4
     When I click SubmitReceipt button
     Then I am in Refund Screen
     When I click Done button
-  
+
     Then I am in Feedback Screen
     When I click Close button
     Then I am in AddReceipt Screen
@@ -39,11 +39,15 @@ Feature: Android Login Feature
     Then I am in AllReceipts Screen
 
     When I click CurrentMonth Link
+    And I click LastReceipt Link
     Then I am in EditReceipt Screen
-
-    When I click ShowReceipt button
+    And I click Delete button
+    When I click CurrentMonth Link
+ 
+    Then I am in EditReceipt Screen
     And I click Delete button
     And I click Done button
+    
     And I click LogOut Link
     Then I am in Login Screen
     

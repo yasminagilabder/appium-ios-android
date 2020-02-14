@@ -35,7 +35,6 @@ public class AndroidLoginScreen extends BaseScreen implements LoginScreen {
 	
 	public void enterLogin(String login) {
 		sendText(By.id(emailField),login);
-		
 	}
 	
 	public void enterPassword(String password) {
