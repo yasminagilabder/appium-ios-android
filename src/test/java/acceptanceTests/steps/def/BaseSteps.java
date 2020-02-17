@@ -73,7 +73,7 @@ public class BaseSteps {
 			allReceiptsScreen = new AndroidAllReceiptsScreen((AndroidDriver) appiumDriver);
 			editReceiptScreen = new AndroidEditReceiptScreen((AndroidDriver) appiumDriver);
 			categoryScreen = new AndroidCategoryScreen(appiumDriver);
-			editReceiptCategoryScreen=new AndroidEditReceiptCatScreen ((AndroidDriver) appiumDriver);
+			editReceiptCategoryScreen = new AndroidEditReceiptCatScreen((AndroidDriver) appiumDriver);
 			
 		} else {
 			loginScreen = new IOSLoginScreen((IOSDriver) appiumDriver);
@@ -163,9 +163,6 @@ public class BaseSteps {
 			case SUBMIT_RECEIPT:
 				updateReceiptScreen.submit();
 				break;
-			case DONE:
-				refundScreen.done();
-				break;
 			case ADD_NEW:
 				refundScreen.addNew();
 				break;
@@ -225,17 +222,37 @@ public class BaseSteps {
 	@Then("I am in EditReceipt screen for Category: {int}")
 	public void iAmInEditReceiptScreenForCategory(int cat) throws UnknownCategoryException {
 		
-		if (cat==1){
+		if (cat == 1) {
 			editReceiptCategoryScreen.checkScreenFormat();
 			editReceiptCategoryScreen.checkCategoryScreen(Category.CATEGORY1);
-		}else if (cat==2){
+		} else if (cat == 2) {
 			editReceiptCategoryScreen.checkScreenFormat();
 			editReceiptCategoryScreen.checkCategoryScreen(Category.CATEGORY2);
-		}else{
+		} else {
 			throw new UnknownCategoryException(UNKNOWN_CATEGORY);
 		}
-		
-		
-		
 	}
+	@When("^I click (.*) button in (.*) Screen$")
+	public void iClickButtonInScreen(String button,String Screen)  {
+		if (button.trim().toLowerCase().equals(DONE)) {
+			if (Screen.trim().toLowerCase().equals(REFUND)) {
+				refundScreen.done();
+			} else if (Screen.trim().toLowerCase().equals(ALL_RECEIPTS)) {
+				allReceiptsScreen.submit();
+			}else{
+				try {
+					throw new UnknownScreenException(UNKNOWN_SCREEN);
+				} catch (UnknownScreenException e) {
+					e.printStackTrace();
+				}
+			}
+		}else{
+			try {
+				throw new UnknownButtonException(UNKNOWN_BUTTON);
+			} catch (UnknownButtonException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 }

@@ -1,5 +1,5 @@
 @android @e2e
-Feature: Android Login Feature
+Feature: Android Basic E2E Restaurant
   
   Scenario: Basic E2E for AT Restaurant
     
@@ -16,11 +16,11 @@ Feature: Android Login Feature
     When I click Category2 button
    # Then I am in EditReceipt screen for Category: 2
     
-    Given I update Amount to 30
+    Given I update Amount to 30.5
     When I click SubmitReceipt button
     Then I am in Refund Screen
-    When I click Done button
-  
+    When I click Done button in Refund Screen
+
   
     Then I am in Feedback Screen
     When I click Close button
@@ -34,7 +34,8 @@ Feature: Android Login Feature
 
     When I click ShowReceipt button
     And I click Delete button
-    And I click Done button
+    
+    When I click Done button in AllReceipts Screen
     And I click LogOut Link
     Then I am in Login Screen
     

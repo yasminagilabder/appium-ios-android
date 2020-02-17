@@ -41,9 +41,10 @@ public class AndroidUpdateReceiptScreen extends BaseScreen implements UpdateRece
 	
 	@Override
 	public void updateAmount(String amount) {
+		double value=Double.parseDouble(amount);
 		waitAndClick(By.id(amountValue));
 		clearText(By.id(amountValue));
-		sendText(By.id(amountValue), amount + "00");
+		sendText(By.id(amountValue), String.valueOf(value*10.0) );
 		androidDriver.findElement(By.id(amountValue)).click();
 		System.out.println("Receipt updated with correct amount....");
 		//swipingVertical();

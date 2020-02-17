@@ -22,7 +22,10 @@ Feature: Android Login Feature
     When I click SubmitReceipt button
     Then I am in Refund Screen
     
-    When I click Done button
+    When I click Done button in Refund Screen
+    
+    When I click Done button in Refund Screen
+    
     Then I am in Feedback Screen
     
     When I click Close button
@@ -36,7 +39,7 @@ Feature: Android Login Feature
     
     When I click ShowReceipt button
     And I click Delete button
-    And I click Done button
+    When I click Done button in Refund Screen
     And I click LogOut Link
     Then I am in Login Screen
     
