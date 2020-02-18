@@ -45,6 +45,7 @@ public class AndroidAllReceiptsScreen extends BaseScreen implements AllReceiptsS
 				throw new NoItemsFoundException(NO_ITEMS);
 			}
 		} catch (Exception e) {
+			
 			e.printStackTrace();
 		}
 		
