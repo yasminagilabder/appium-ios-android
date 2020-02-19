@@ -1,6 +1,8 @@
 package acceptanceTests.runners;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.AutomationName;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
@@ -32,7 +34,6 @@ public class AndroidCucumberRunnerTest {
 	private AndroidDriver driver;
 	private DesiredCapabilities capabilities = new DesiredCapabilities();
 	
-	
 	@BeforeClass
 	@Parameters({"deviceName", "UDID", "platformVersion", "node_port"})
 	public void setUp(String deviceName, String UDID, String platformVersion, String node_port) throws IOException {
@@ -53,6 +54,7 @@ public class AndroidCucumberRunnerTest {
 		capabilities.setCapability("resetKeyboard", true);
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("printPageSourceOnFindFailure", "true");
+		capabilities.setCapability("automationName", AutomationName.ANDROID_UIAUTOMATOR2);
 		
 		URL url = new URL("http://localhost:" + node_port + "/wd/hub");
 		driver = new AndroidDriver(url, capabilities);
