@@ -77,13 +77,13 @@ public class AndroidCucumberRunnerTest {
 	
 	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
 	public void scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) throws Throwable {
-		System.out.println("scenario....");
+		System.out.println("Scenario....");
 		testNGCucumberRunner.runScenario(pickle.getPickle());
 	}
 	
 	@DataProvider
 	public Object[][] scenarios() {
-		System.out.println("scenarios....");
+		System.out.println("Scenarios....");
 		return testNGCucumberRunner.provideScenarios();
 	}
 	

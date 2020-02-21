@@ -124,4 +124,8 @@ public class AndroidEditReceiptScreen extends BaseScreen implements EditReceiptS
 		waitAndClick(By.id(logOut));
 		
 	}
+	
+	public String getAmountValue() {
+		return amountValue;
+	}
 }

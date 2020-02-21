@@ -22,7 +22,7 @@ public class AndroidAllReceiptsScreen extends BaseScreen implements AllReceiptsS
 	private String receiptDetails = "v_receipt_detail";
 	private String lista = "android.widget.RelativeLayout";
 	private static final String NO_ITEMS = "No items have been found!!!!";
-	
+	AndroidEditReceiptScreen androidEditReceiptScreen;
 	public AndroidAllReceiptsScreen(AndroidDriver driver) {
 		super(driver);
 	}
@@ -31,29 +31,23 @@ public class AndroidAllReceiptsScreen extends BaseScreen implements AllReceiptsS
 	public void checkScreenFormat() {
 		sleep(1000);
 		assertThat("Title is not present", isElementPresent(By.id(title)));
-		
 	}
+	
+	
 	@Override
 	public void selectCurrentMonth() {
+	
 		sleep(8000);
-		try {
-			List<WebElement> list = driver.findElementsByClassName(lista);
-			if (list.size() > 0) {
-				list.get(0).click();
-				System.out.println("Current month selected");
-			} else {
-				throw new NoItemsFoundException(NO_ITEMS);
-			}
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
 		
+		List<WebElement> list = driver.findElementsByClassName(lista);
+		list.get(0).click();
+		System.out.println("Current month selected");
 	}
 	
 	@Override
 	public void selectLastReceipt() {
 		sleep(3000);
+		
 		try {
 			List<WebElement> receiptsElements = driver.findElementsById(receiptDetails);
 			if (receiptsElements.size() > 0) {
@@ -66,6 +60,35 @@ public class AndroidAllReceiptsScreen extends BaseScreen implements AllReceiptsS
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void DeleteAllReceiptsDay() {
+		androidEditReceiptScreen = new AndroidEditReceiptScreen((AndroidDriver) driver);
+		selectCurrentMonth();
+		if (isElementPresent(By.id(androidEditReceiptScreen.getAmountValue()))) {
+			androidEditReceiptScreen.deleteReceipt();
+		}
+		if (isElementPresent(By.id(receiptDetails))){
+			int count = 0;
+			List<WebElement> receiptsElements = waitAndFindElements(By.id(receiptDetails));
+			int size = receiptsElements.size();
+			System.out.println("receiptsElements.size() " + size);
+			if (size != 0) {
+				while (count < size - 1) {
+					receiptsElements.get(0).click();
+					androidEditReceiptScreen.deleteReceipt();
+					sleep(2000);
+					System.out.println("receipt: " + count + "deleted");
+					count++;
+					receiptsElements =waitAndFindElements(By.id(receiptDetails));
+					
+				}
+				selectCurrentMonth();
+				androidEditReceiptScreen.deleteReceipt();
+			}
+		}
+		
+		this.submit();
 	}
 	
 	public void submit() {

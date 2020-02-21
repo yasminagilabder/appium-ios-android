@@ -82,9 +82,8 @@ public class BaseSteps {
 	
 	@After()
 	public void afterScenario(Scenario scenario) {
-		
-		/*AppiumDriver appiumDriver = ThreadLocalDriver.getTLDriver();
-		appiumDriver.closeApp();*/
+		AppiumDriver appiumDriver = ThreadLocalDriver.getTLDriver();
+		appiumDriver.closeApp();
 	}
 	
 	@Before()
@@ -255,4 +254,8 @@ public class BaseSteps {
 		}
 	}
 	
+	@Then("I will delete allReceipts of the day")
+	public void iWillDeleteAllReceiptsOfTheDay() {
+		allReceiptsScreen.DeleteAllReceiptsDay();
+	}
 }

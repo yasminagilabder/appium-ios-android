@@ -5,6 +5,7 @@ public interface AllReceiptsScreen{
 	void checkScreenFormat();
 	void selectCurrentMonth();
 	void selectLastReceipt();
+	void DeleteAllReceiptsDay();
 	
 	
 }

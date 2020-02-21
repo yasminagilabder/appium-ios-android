@@ -1,4 +1,4 @@
-@android @e2e @wip
+@android @e2e
 Feature: Basic E2E for AT
   
   Scenario: Basic E2E for AT
@@ -13,17 +13,19 @@ Feature: Basic E2E for AT
     And I click Gallery button
     When I click verifyReceipt button
     Then I am in Category Screen
+    
     When I click Category1 button
-
-   Then I am in EditReceipt screen for Category: 1
+    Then I am in EditReceipt screen for Category: 1
 
     Given I update Amount to 2.4
     When I click SubmitReceipt button
     Then I am in Refund Screen
+    
     When I click AddNew button
     And I click Gallery button
-    When I click verifyReceipt button
+    And I click verifyReceipt button
     Then I am in Category Screen
+    
     When I click Category2 button
     Then I am in EditReceipt screen for Category: 2
 
@@ -37,16 +39,8 @@ Feature: Basic E2E for AT
 
     When I click Receipt Link
     Then I am in AllReceipts Screen
-
-    When I click CurrentMonth Link
-    And I click LastReceipt Link
-    Then I am in EditReceipt Screen
-    And I click Delete button
     
-    When I click CurrentMonth Link
-    Then I am in EditReceipt Screen
-    And I click Delete button
-    When I click Done button in AllReceipts Screen
+    Then I will delete allReceipts of the day
     And I click LogOut Link
     Then I am in Login Screen
     

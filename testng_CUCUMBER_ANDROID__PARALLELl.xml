@@ -19,7 +19,7 @@
         <parameter name="platformVersion" value="10.0.0"/>
         <parameter name="node_port" value="3456"/>
         <classes>
-            <class name="acceptanceTests.runners.AndroidCucumberRunnerTest2">
+            <class name="acceptanceTests.runners.AndroidCucumberRunnerTest">
             </class>
         </classes>
     </test>
