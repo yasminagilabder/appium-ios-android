@@ -7,9 +7,8 @@ public interface LoginScreen {
 	void enterLogin(String login);
 	
 	void enterPassword(String passwordValue);
-	
-	void closeFireBase();
-	public void submit();
+
+	 void submit();
 	
 	
 }

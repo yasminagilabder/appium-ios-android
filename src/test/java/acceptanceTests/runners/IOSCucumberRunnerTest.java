@@ -2,6 +2,7 @@ package acceptanceTests.runners;
 
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
@@ -13,20 +14,18 @@ import util.driver.ThreadLocalDriver;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 
 @CucumberOptions(
-
 		features = "src/test/resources/features/",
 		glue = "acceptanceTests.steps.def"
 		, tags = {"@ios"}
 		, monochrome = true
 		, strict = true,
 		plugin = {"pretty",
+				"json:target/cucumber.json",
 				"html:target/ios_cucumber-reports/reports"}
 )
-
 
 public class IOSCucumberRunnerTest {
 	private TestNGCucumberRunner testNGCucumberRunner;
@@ -34,29 +33,35 @@ public class IOSCucumberRunnerTest {
 	private DesiredCapabilities capabilities = new DesiredCapabilities();
 	
 	@BeforeClass
-	@Parameters({"deviceName","platformVersion","node_port"})
-	public void setUp(String deviceName, String platformVersion, String node_port ) throws IOException {
+	@Parameters({"deviceName","platformVersion","node_port","wda"})
+	public void setUp(String deviceName, String platformVersion, String node_port, String wda) throws IOException {
 		File classpathRoot = new File(System.getProperty("user.dir"));
-		File receiptDir = new File(classpathRoot, "/src/test/resources/receipts/DE_RECEIPT1.jpg");
-		File appDir = new File(classpathRoot, "/src/app/iOS");
-		File app = new File(appDir, "LUNCHIT_RC.app");
+		File appDir = new File(classpathRoot, "/src/app/iOS/");
+		File app = new File(appDir, "AcquaintNativeiOS.app");
 		capabilities.setCapability("app", app.getAbsolutePath());
-		capabilities.setCapability("platformName", "iOS");
+		capabilities.setCapability(IOSMobileCapabilityType.PLATFORM_NAME, "iOS");
 		capabilities.setCapability("deviceName", deviceName);
 		capabilities.setCapability("platformVersion", platformVersion);
 		capabilities.setCapability("automationName","XCUITest");
-		capabilities.setCapability(IOSMobileCapabilityType.SEND_KEY_STRATEGY, "grouped");
+		capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, wda);
 		capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, "true");
-		capabilities.setCapability("fullReset", "false");
+		capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, "false");
+		capabilities.setCapability(IOSMobileCapabilityType.SHOW_XCODE_LOG, "false");
+		capabilities.setCapability(IOSMobileCapabilityType.ACCEPT_INSECURE_CERTS, "true");
+		capabilities.setCapability(IOSMobileCapabilityType.USE_NEW_WDA, "false");
+		capabilities.setCapability(MobileCapabilityType.SUPPORTS_JAVASCRIPT, "true");
+		capabilities.setCapability(IOSMobileCapabilityType.WAIT_FOR_APP_SCRIPT, "true");
+		capabilities.setCapability(IOSMobileCapabilityType.SUPPORTS_ALERTS, "true");
+		capabilities.setCapability(IOSMobileCapabilityType.XCODE_ORG_ID, "YASMINA GIL");
+		capabilities.setCapability(IOSMobileCapabilityType.XCODE_SIGNING_ID, "yasminagilabder@icloud.com");
+		capabilities.setCapability(IOSMobileCapabilityType.CONNECT_HARDWARE_KEYBOARD, "true");
 		URL url = new URL("http://localhost:" + node_port +"/wd/hub");
-		System.out.println("url: "+url.toString());
 		driver = new IOSDriver(url, capabilities);
+		System.out.println("URL: " + url);
 		System.out.println("deviceName: " + deviceName);
 		System.out.println("session: " + driver.getSessionId());
-		driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
 		ThreadLocalDriver.setTLDriver(driver);
 		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-	
 	}
 	
 	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
@@ -67,8 +72,13 @@ public class IOSCucumberRunnerTest {
 	
 	@DataProvider
 	public Object[][] scenarios() {
-		System.out.println("scenarios....");
-		return testNGCucumberRunner.provideScenarios();
+		if (testNGCucumberRunner != null) {
+			System.out.println("Scenarios....");
+			return testNGCucumberRunner.provideScenarios();
+		} else {
+			System.out.println("Did you run the setup script as in Readme?");
+			return null;
+		}
 	}
 	
 	@AfterClass(alwaysRun = true)

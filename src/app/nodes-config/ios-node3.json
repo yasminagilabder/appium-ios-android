@@ -1,0 +1,30 @@
+{
+
+"capabilities":
+	[
+		{
+			"browserName": "Real-iPhone",
+			"version":"13.5",
+			"maxInstances": 3,
+			"platformName": "iOS"
+		}
+	],
+"configuration":
+{
+	"cleanUpCycle": 2000,
+	"nodePolling": 2000,
+	"newSessionWaitTimeout": -1,
+	"nodeTimeout": 120,
+	"maxSession": 1,
+	"timeout": 40000,
+	"url": "http://localhost:4790/wd/hub",
+	"hub": "http://localhost:4444/grid/register",
+	"host": "127.0.0.1",
+	"port": 4795,
+	"proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+	"register": true,
+	"registerCycle": 5000,
+	"hubPort": 4444,
+	"hubHost": "127.0.0.1"
+}
+}

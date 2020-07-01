@@ -4,7 +4,7 @@
 	[
 		{
 			"browserName": "iPhone",
-			"version":"13.3",
+			"version":"13.5",
 			"maxInstances": 3,
 			"platformName": "iOS"
 		}

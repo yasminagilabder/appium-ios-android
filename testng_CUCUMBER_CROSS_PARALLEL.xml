@@ -1,23 +1,22 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="CROSS_Parallel" parallel="tests" thread-count="2">
-    <test name="Android">
-        <parameter name="deviceName" value="Pixel_3_XL_API_29"/>
-        <parameter name="UDID" value="emulator-5554"/>
-        <parameter name="platformVersion" value="8.1.0"/>
-        <parameter name="node_port" value="3456"/>
-        <classes>
-            <class name="acceptanceTests.runners.AndroidCucumberRunnerTest">
-            </class>
-        </classes>
-    </test>
+<suite name="IOS" parallel="tests" thread-count="2">
     <test name="iPhone 11 Pro Max">
-        <parameter name="device_name" value="iPhone"/>
         <parameter name="wda" value="8100"/>
         <parameter name="node_port" value="4730"/>
         <parameter name="deviceName" value="iPhone 11 Pro Max"/>
-        <parameter name="platformVersion" value="13.3"/>
+        <parameter name="platformVersion" value="13.5"/>
+        <classes>
+            <class name="acceptanceTests.runners.IOSCucumberRunnerTest">
+            </class>
+        </classes>
+    </test>
+    <test name="iPhone 8">
+        <parameter name="wda" value="8200"/>
+        <parameter name="node_port" value="4790"/>
+        <parameter name="deviceName" value="iPhone 8"/>
+        <parameter name="platformVersion" value="13.5"/>
         <classes>
             <class name="acceptanceTests.runners.IOSCucumberRunnerTest">
             </class>
