@@ -25,30 +25,4 @@ public class AndroidLoginScreen extends BaseScreen implements LoginScreen {
 		assertThat("Format is not correct",present, is(true));
 
 	}
-	
-	public void enterLogin(String login) {
-		sendText(By.id(emailField),login);
-	}
-	
-	public void enterPassword(String password) {
-		sendText(By.id(passwordField), password);
-	}
-	
-	public void submit() {
-		clickBy(By.id(btnLogin));
-		closeFireBase();
-	}
-	
-	public void closeFireBase(){
-		sleep(3000);
-		String toggleFirebase = "com.lunchit.android.beta:id/ga_switch";
-		if (isElementPresent(By.id(toggleFirebase))){
-			clickBy(By.id(toggleFirebase));
-			String closeFirebase = "com.lunchit.android.beta:id/close_happy";
-			clickBy(By.id(closeFirebase));
-			System.out.println("Enabling Firebase ....");
-		}
-	}
-	
-	
 }

@@ -66,17 +66,9 @@ public class AndroidCucumberRunnerTest {
         System.out.println("URL: " + url.toString());
         driver = new AndroidDriver(url, capabilities);
         System.out.println("settings: " + driver.getCapabilities());
-        File receiptDir = new File(classpathRoot, "/src/test/resources/receipts/DE_RECEIPT1.jpg");
         System.out.println("deviceName: " + deviceName);
         System.out.println("udid: " + UDID);
         System.out.println("session: " + driver.getSessionId());
-        try {
-
-            driver.pushFile("/sdcard/Pictures/DE_RECEIPT1.jpg", Base64.encodeBase64(FileUtils.readFileToByteArray(receiptDir)));
-            System.out.println("Copying receipt into Emulator...");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         ThreadLocalDriver.setTLDriver(driver);
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }

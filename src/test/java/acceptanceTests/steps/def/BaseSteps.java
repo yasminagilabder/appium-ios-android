@@ -67,35 +67,5 @@ public class BaseSteps {
     }
 
 
-    @Given("^I enter (.*) in field (.*)$")
-    public void i_enter_value_in_field(String value, String field) throws Exception {
-        switch (field.trim().toLowerCase()) {
-            case LOGGING:
-                loginScreen.enterLogin(value);
-                break;
-            case PASSWORD:
-                loginScreen.enterPassword(value);
-                break;
-            default:
-                throw new UnknownFieldException(UNKNOWN_FIELD);
-        }
-    }
-
-    @When("^I click (.*) button$")
-    public void i_click_login_button(String value) throws Throwable {
-        switch (value.trim().toLowerCase()) {
-            case LOGGING:
-                loginScreen.submit();
-                break;
-
-            default:
-                throw new UnknownButtonException(UNKNOWN_BUTTON);
-        }
-    }
-
-
-
-
-
 
 }

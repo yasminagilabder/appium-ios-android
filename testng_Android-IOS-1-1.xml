@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="IOS" parallel="tests" thread-count="2">
-    <test name="iPhone 11 Pro Max">
-        <parameter name="wda" value="8100"/>
-        <parameter name="node_port" value="4730"/>
+    <test name="iPhone-11-Pro-Max">
+        <parameter name="wda" value="8200"/>
+        <parameter name="node_port" value="4790"/>
         <parameter name="deviceName" value="iPhone 11 Pro Max"/>
         <parameter name="platformVersion" value="13.5"/>
         <classes>
@@ -12,13 +12,13 @@
             </class>
         </classes>
     </test>
-    <test name="iPhone 8">
-        <parameter name="wda" value="8200"/>
-        <parameter name="node_port" value="4790"/>
-        <parameter name="deviceName" value="iPhone 8"/>
-        <parameter name="platformVersion" value="13.5"/>
+    <test name="Pixel">
+        <parameter name="deviceName" value="Pixel_XL_API_28"/>
+        <parameter name="UDID" value="emulator-5556"/>
+        <parameter name="platformVersion" value="8.1.0"/>
+        <parameter name="node_port" value="3456"/>
         <classes>
-            <class name="acceptanceTests.runners.IOSCucumberRunnerTest">
+            <class name="acceptanceTests.runners.AndroidCucumberRunnerTest">
             </class>
         </classes>
     </test>
