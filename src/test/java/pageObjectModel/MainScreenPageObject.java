@@ -17,19 +17,17 @@ package pageObjectModel;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.WithTimeout;
 import io.appium.java_client.pagefactory.iOSXCUITBy;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import screens.common.BaseScreen;
+import screens.common.Actions;
 import screens.interfaces.MainView;
 
 import java.time.temporal.ChronoUnit;
 
 
-public class MainScreenPageObject extends BaseScreen implements MainView {
+public class MainScreenPageObject extends Actions implements MainView {
 
 //	@AndroidFindBy(id = "org.traeg.fastip:id/billAmtEditText")
 	@iOSXCUITBy(xpath = "(//XCUIElementTypeStaticText[@name=\"NameLabel\"])[4]")

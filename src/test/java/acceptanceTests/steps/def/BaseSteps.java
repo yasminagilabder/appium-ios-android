@@ -10,9 +10,9 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import pageObjectModel.MainScreenPageObject;
-import screens.android.*;
+import screens.platform.IOSMainView;
+import screens.platform.android.AndroidMainView;
 import screens.interfaces.MainView;
-import screens.ios.*;
 import util.driver.ThreadLocalDriver;
 
 

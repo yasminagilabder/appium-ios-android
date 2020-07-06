@@ -1,16 +1,14 @@
 package acceptanceTests.steps.def;
 
 import acceptanceTests.exception.UnknownButtonException;
-import acceptanceTests.exception.UnknownScreenException;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en_scouse.An;
-import screens.android.AndroidDetailView;
+import screens.platform.android.AndroidDetailView;
 import screens.interfaces.DetailView;
-import screens.ios.IOSDetailView;
+import screens.platform.IOSDetailView;
 import util.driver.ThreadLocalDriver;
 
 import static acceptanceTests.constants.Constants.*;
