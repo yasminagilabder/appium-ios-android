@@ -94,5 +94,6 @@ public class AndroidCucumberRunnerTest {
     public void tearDownClass() {
         System.out.println("tearDownClass....");
         testNGCucumberRunner.finish();
+
     }
 }

@@ -1,4 +1,4 @@
-package util.exception;
+package acceptanceTests.exception;
 
 public class NoItemsFoundException extends Exception {
 	public NoItemsFoundException(String errorMessage) {

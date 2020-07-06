@@ -6,5 +6,7 @@ appium --nodeconfig src/app/nodes-config/ios-node1.json -p 4730 -cp 4730 &
 appium --nodeconfig src/app/nodes-config/ios-node2.json -p 4790 -cp 4790 &
 ios-sim showdevicetypes
 ios-sim start --devicetypeid "iPhone-11-Pro-Max, 13.5" &
-emulator -list-avds
-~/Library/Android/sdk/emulator/emulator -avd "Pixel_XL_API_28" -port 5556
+emulator -list-avds &
+~/Library/Android/sdk/emulator/emulator -avd "Pixel_XL_API_28" -port 5556 &
+adb devices &
+

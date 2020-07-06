@@ -29,7 +29,6 @@ public class BaseScreen {
     }
 
     protected void click (By by) {
-        waitVisibility(by);
         driver.findElement(by).click();
     }
 
@@ -71,14 +70,12 @@ public class BaseScreen {
     protected void sendText (By by, String text) {
          waitAndFindElement(by).sendKeys(text);
     }
-    
-   
     protected void clearText (By by) {
         waitAndFindElement(by).clear();
     }
 
     protected void assertEquals (String actual, String expected) {
-        Assert.assertEquals(actual,expected, "Two texts are not equal!" + "Actual: " + actual + " Expected: " + expected);
+        Assert.assertEquals(actual,expected, "Two texts are not equal!");
     }
 
     protected void waitVisibility (By by) {

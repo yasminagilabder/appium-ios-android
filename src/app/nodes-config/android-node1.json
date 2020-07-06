@@ -2,7 +2,7 @@
   "capabilities": [
     {
       "browserName": "Android",
-      "maxInstances": 3,
+      "maxInstances": 1,
       "platform": "ANDROID"
     }
   ],

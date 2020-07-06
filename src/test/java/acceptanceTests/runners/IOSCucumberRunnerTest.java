@@ -52,9 +52,7 @@ public class IOSCucumberRunnerTest {
 		capabilities.setCapability(MobileCapabilityType.SUPPORTS_JAVASCRIPT, "true");
 		capabilities.setCapability(IOSMobileCapabilityType.WAIT_FOR_APP_SCRIPT, "true");
 		capabilities.setCapability(IOSMobileCapabilityType.SUPPORTS_ALERTS, "true");
-		capabilities.setCapability(IOSMobileCapabilityType.XCODE_ORG_ID, "YASMINA GIL");
-		capabilities.setCapability(IOSMobileCapabilityType.XCODE_SIGNING_ID, "yasminagilabder@icloud.com");
-		capabilities.setCapability(IOSMobileCapabilityType.CONNECT_HARDWARE_KEYBOARD, "true");
+		//capabilities.setCapability(IOSMobileCapabilityType.CONNECT_HARDWARE_KEYBOARD, "true");
 		URL url = new URL("http://localhost:" + node_port +"/wd/hub");
 		driver = new IOSDriver(url, capabilities);
 		System.out.println("URL: " + url);
@@ -85,5 +83,6 @@ public class IOSCucumberRunnerTest {
 	public void tearDownClass() {
 		System.out.println("tearDownClass....");
 		testNGCucumberRunner.finish();
+
 	}
 }
