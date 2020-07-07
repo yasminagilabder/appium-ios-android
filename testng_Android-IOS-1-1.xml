@@ -14,7 +14,7 @@
     </test>
     <test name="Pixel">
         <parameter name="deviceName" value="Pixel_XL_API_28"/>
-        <parameter name="UDID" value="emulator-5554"/>
+        <parameter name="UDID" value="emulator-5556"/>
         <parameter name="platformVersion" value="8.1.0"/>
         <parameter name="node_port" value="3456"/>
         <classes>

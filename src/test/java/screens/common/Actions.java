@@ -58,12 +58,9 @@ public class Actions {
     protected void clickImage (String b64Template) {
         WebElement me=driver.findElement(MobileBy.image(b64Template));
         me.click();
-      
     }
     protected WebElement waitByAccessibility (String accessibilityId) {
         return driver.findElementByAccessibilityId(accessibilityId);
-        
-        
     }
 
     protected String getText(By by) {
@@ -84,9 +81,7 @@ public class Actions {
     protected void waitVisibility (By by) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
-   
-    
-    
+
     protected void sleep (long time) {
         try {
             Thread.sleep(time);
