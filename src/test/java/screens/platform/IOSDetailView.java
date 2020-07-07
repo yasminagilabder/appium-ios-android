@@ -26,9 +26,7 @@ public class IOSDetailView extends Actions implements DetailView {
     public void delete(){
         click(By.id("Delete"));
     }
-    public void back(){
-        click(By.id("List"));
-    }
+    public void back(){ sleep(500);waitByAccessibility("List").click();}
 
 
 }

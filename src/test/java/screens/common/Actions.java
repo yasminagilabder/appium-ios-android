@@ -13,11 +13,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public class Actions {
 
     protected AppiumDriver driver;
     protected WebDriverWait wait;
+
 
     public Actions(AppiumDriver driver){
         this.driver = driver;
@@ -75,7 +78,7 @@ public class Actions {
     }
 
     protected void assertEquals (String actual, String expected) {
-        Assert.assertEquals(actual,expected, "Two texts are not equal!");
+        Assert.assertEquals(actual,expected, "Texts are not equal!");
     }
 
     protected void waitVisibility (By by) {

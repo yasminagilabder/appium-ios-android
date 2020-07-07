@@ -12,7 +12,6 @@ public class AndroidDetailView extends Actions implements DetailView {
         super(driver);
     }
 
-
     @Override
     public void checkScreenFormat(String name, String lastName) {
         sleep(500);
@@ -26,7 +25,7 @@ public class AndroidDetailView extends Actions implements DetailView {
     public void delete(){
         click(By.id("com.xamarin.acquaintnative:id/acquaintanceDeleteButton"));
     }
-    public void back(){ waitByAccessibility("Navigate up").click();}
+    public void back(){ sleep(500);waitByAccessibility("Navigate up").click();}
 
 
 }

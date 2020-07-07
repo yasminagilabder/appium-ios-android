@@ -4,5 +4,6 @@ public interface MainView {
 	
 	void checkScreenFormat();
 	void selectUser(String name, String last);
-
+	void addUser();
+	void setSettings();
 }

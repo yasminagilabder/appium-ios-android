@@ -1,5 +1,6 @@
 package acceptanceTests.steps.def;
 
+import acceptanceTests.exception.UnknownButtonException;
 import acceptanceTests.exception.UnknownScreenException;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -10,31 +11,35 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import pageObjectModel.MainScreenPageObject;
+import screens.platform.IOSDetailView;
 import screens.platform.IOSMainView;
+import screens.platform.android.AndroidDetailView;
 import screens.platform.android.AndroidMainView;
 import screens.interfaces.MainView;
+import screens.interfaces.DetailView;
 import util.driver.ThreadLocalDriver;
+
+import static acceptanceTests.constants.common.Constants.*;
+import static acceptanceTests.constants.view.DetailView.ADD;
+import static acceptanceTests.constants.view.DetailView.SETTING;
+import static acceptanceTests.constants.view.UserView.*;
 
 
 public class BaseSteps {
-    private static final String MAIN = "main";
-    private static final String UNKNOWN_SCREEN = "Unknown screen!!!";
-    private static final String UNKNOWN_FIELD = "Unknown field!!!";
-    private static final String UNKNOWN_BUTTON = "Unknown button!!!";
-    public static final String ANSI_RED    = "\u001B[31m";
-    public static final String ANSI_RESET  = "\u001B[0m";
+
     MainScreenPageObject mainScreenPageObject;
     AppiumDriver appiumDriver;
     MainView mainView;
+    DetailView detailView;
 
     public BaseSteps() {
-         appiumDriver = ThreadLocalDriver.getTLDriver();
+        appiumDriver = ThreadLocalDriver.getTLDriver();
         if (appiumDriver instanceof AndroidDriver) {
-            mainView = new AndroidMainView((AndroidDriver) appiumDriver);
-
+            mainView = new AndroidMainView(appiumDriver);
+            detailView = new AndroidDetailView(appiumDriver);
         } else {
-           mainView = new IOSMainView((IOSDriver) appiumDriver);
-             //mainScreenPageObject=new MainScreenPageObject(appiumDriver);
+            mainView = new IOSMainView(appiumDriver);
+            detailView = new IOSDetailView(appiumDriver);
         }
     }
 
@@ -49,21 +54,47 @@ public class BaseSteps {
         long id = Thread.currentThread().getId();
         appiumDriver = ThreadLocalDriver.getTLDriver();
         appiumDriver.launchApp();
-        System.out.println(ANSI_RED + "**************** Starting tests in thread: " + id+ "-- Session details: "+appiumDriver.getSessionDetails().get("deviceName")+ ANSI_RESET);
+        System.out.println(ANSI_RED + "**************** Starting tests in thread: " + id + "-- Session details: " + appiumDriver.getSessionDetails().get("deviceName") + ANSI_RESET);
     }
 
 
     @Given("^I am in (.*) Screen$")
-    public void iAmOnScreen(String screen)  {
+    public void iAmOnScreen(String screen) {
         switch (screen.toLowerCase()) {
             case MAIN:
                 mainView.checkScreenFormat();
-                //mainScreenPageObject.checkScreenFormat();
                 break;
             default:
                 try {
                     throw new UnknownScreenException(UNKNOWN_SCREEN);
-                } catch (UnknownScreenException e) {
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+        }
+    }
+
+    @Given("^I click in (.*) button$")
+    public void iClickInButton(String bottomName) {
+        switch (bottomName.toLowerCase()) {
+            case EDIT:
+                detailView.edit();
+                break;
+            case DELETE:
+                detailView.delete();
+                break;
+            case BACK:
+                detailView.back();
+                break;
+            case ADD:
+                mainView.addUser();
+                break;
+            case SETTING:
+                mainView.setSettings();
+                break;
+            default:
+                try {
+                    throw new UnknownButtonException(UNKNOWN_BUTTON);
+                } catch (UnknownButtonException e) {
                     e.printStackTrace();
                 }
         }
@@ -71,7 +102,8 @@ public class BaseSteps {
 
     @When("^I select user with first name (.*) and last name (.*)$")
     public void iSelectFirstNameAndLastName(String name, String last) {
-      mainView.selectUser(name,last);
-      // mainScreenPageObject.selectUser();
+        mainView.selectUser(name, last);
+        // mainScreenPageObject.selectUser();
     }
+
 }

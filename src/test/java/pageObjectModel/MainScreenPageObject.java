@@ -17,38 +17,39 @@ package pageObjectModel;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.WithTimeout;
-import io.appium.java_client.pagefactory.iOSXCUITBy;
-import org.openqa.selenium.support.PageFactory;
+
+import io.appium.java_client.pagefactory.iOSBy;
+import org.openqa.selenium.By;
+
 import screens.common.Actions;
 import screens.interfaces.MainView;
 
 import java.time.temporal.ChronoUnit;
 
 
-public class MainScreenPageObject extends Actions implements MainView {
+public class MainScreenPageObject extends Actions {
 
-//	@AndroidFindBy(id = "org.traeg.fastip:id/billAmtEditText")
-	@iOSXCUITBy(xpath = "(//XCUIElementTypeStaticText[@name=\"NameLabel\"])[4]")
 
+	@AndroidFindBy(id = "org.traeg.fastip:id/totalAmtTextView")
+	@iOSBy(xpath = "//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeStaticText[4]")
 	@WithTimeout(time = 10,chronoUnit = ChronoUnit.SECONDS)
     MobileElement selectUser;
 
 
 	public MainScreenPageObject(AppiumDriver<?> driver) {
 		super(driver);
-		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+		//PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 
-	@Override
-	public void checkScreenFormat() {
 
-	}
-
-	@Override
 	public void selectUser(String name, String last) {
+		String completeName="\""+last+", "+name+"\"";
+		click(By.id(last.trim() + ", " + name.trim()));
 
+		click(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.support.v7.widget.RecyclerView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView[@text="+completeName+"]"));
 	}
 
 
