@@ -51,7 +51,7 @@ public class AndroidCucumberRunnerTest {
         capabilities.setCapability("platformVersion", platformVersion);
         capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("autoGrantPermissions", true);
-        capabilities.setCapability("fullReset", true);
+       // capabilities.setCapability("fullReset", true);
         capabilities.setCapability("noReset", false);
         capabilities.setCapability("resetKeyboard", true);
         capabilities.setCapability("unicodeKeyboard", true);
@@ -75,14 +75,14 @@ public class AndroidCucumberRunnerTest {
 
     @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
     public void scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) throws Throwable {
-        System.out.println("Scenario....");
+        System.out.println("Scenario: "+cucumberFeature.toString());
         testNGCucumberRunner.runScenario(pickle.getPickle());
     }
 
     @DataProvider
     public Object[][] scenarios() {
         if (testNGCucumberRunner != null) {
-            System.out.println("Scenarios....");
+            System.out.println("Scenarios.: ");
             return testNGCucumberRunner.provideScenarios();
         } else {
             System.out.println("Did you run the setup script as in Readme?");
@@ -92,8 +92,9 @@ public class AndroidCucumberRunnerTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDownClass() {
-        System.out.println("tearDownClass....");
+        System.out.println("tearDownClass");
         testNGCucumberRunner.finish();
+        if (driver!=null) driver.closeApp();
 
     }
 }

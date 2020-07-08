@@ -15,13 +15,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-
 @CucumberOptions(
 		features = "src/test/resources/features/",
-		glue = "acceptanceTests.steps.def"
-		, tags = {"@ios"}
-		, monochrome = true
-		, strict = true,
+		glue = "acceptanceTests.steps.def",
+		tags = {"@ios"},
+		monochrome = true,
+		strict = true,
 		plugin = {"pretty",
 				"json:target/cucumber.json",
 				"html:target/ios_cucumber-reports/reports"}
@@ -43,7 +42,8 @@ public class IOSCucumberRunnerTest {
 		capabilities.setCapability("deviceName", deviceName);
 		capabilities.setCapability("platformVersion", platformVersion);
 		capabilities.setCapability("automationName","XCUITest");
-		capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, wda);
+		capabilities.setCapability("noReset", true);
+	/*	capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, wda);
 		capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, "true");
 		capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, "false");
 		capabilities.setCapability(IOSMobileCapabilityType.SHOW_XCODE_LOG, "false");
@@ -51,7 +51,7 @@ public class IOSCucumberRunnerTest {
 		capabilities.setCapability(IOSMobileCapabilityType.USE_NEW_WDA, "false");
 		capabilities.setCapability(MobileCapabilityType.SUPPORTS_JAVASCRIPT, "true");
 		capabilities.setCapability(IOSMobileCapabilityType.WAIT_FOR_APP_SCRIPT, "true");
-		capabilities.setCapability(IOSMobileCapabilityType.SUPPORTS_ALERTS, "true");
+		capabilities.setCapability(IOSMobileCapabilityType.SUPPORTS_ALERTS, "true");*/
 		//capabilities.setCapability(IOSMobileCapabilityType.CONNECT_HARDWARE_KEYBOARD, "true");
 		URL url = new URL("http://localhost:" + node_port +"/wd/hub");
 		driver = new IOSDriver(url, capabilities);
@@ -83,6 +83,6 @@ public class IOSCucumberRunnerTest {
 	public void tearDownClass() {
 		System.out.println("tearDownClass....");
 		testNGCucumberRunner.finish();
-
+		if (driver!=null) driver.closeApp();
 	}
 }
