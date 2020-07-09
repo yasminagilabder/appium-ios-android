@@ -4,25 +4,28 @@ import acceptanceTests.exception.UnknownButtonException;
 import acceptanceTests.exception.UnknownScreenException;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import pageObjectModel.MainScreenPageObject;
-import screens.platform.IOSDetailView;
-import screens.platform.IOSMainView;
+import screens.interfaces.EditView;
+import screens.platform.android.AndroidEditView;
+import screens.platform.ios.IOSDetailView;
+import screens.platform.ios.IOSMainView;
 import screens.platform.android.AndroidDetailView;
 import screens.platform.android.AndroidMainView;
 import screens.interfaces.MainView;
 import screens.interfaces.DetailView;
+import screens.platform.ios.IOSEditView;
 import util.driver.ThreadLocalDriver;
 
 import static acceptanceTests.constants.common.Constants.*;
-import static acceptanceTests.constants.view.DetailView.ADD;
-import static acceptanceTests.constants.view.DetailView.SETTING;
-import static acceptanceTests.constants.view.UserView.*;
+import static acceptanceTests.constants.view.EditView.SAVE;
+import static acceptanceTests.constants.view.MainView.ADD;
+import static acceptanceTests.constants.view.MainView.SETTING;
+import static acceptanceTests.constants.view.DetailView.*;
 
 
 public class BaseSteps {
@@ -31,15 +34,18 @@ public class BaseSteps {
     AppiumDriver appiumDriver;
     MainView mainView;
     DetailView detailView;
+    EditView editView;
 
     public BaseSteps() {
         appiumDriver = ThreadLocalDriver.getTLDriver();
         if (appiumDriver instanceof AndroidDriver) {
             mainView = new AndroidMainView(appiumDriver);
             detailView = new AndroidDetailView(appiumDriver);
+            editView = new AndroidEditView(appiumDriver);
         } else {
             mainView = new IOSMainView(appiumDriver);
             detailView = new IOSDetailView(appiumDriver);
+            editView = new IOSEditView(appiumDriver);
         }
     }
 
@@ -53,7 +59,6 @@ public class BaseSteps {
     public void beforeScenario(Scenario scenario) {
         long id = Thread.currentThread().getId();
         appiumDriver = ThreadLocalDriver.getTLDriver();
-        appiumDriver.launchApp();
         System.out.println(ANSI_RED + "**************** Starting tests in thread: " + id + "-- Session details: " + appiumDriver.getSessionDetails().get("deviceName") + ANSI_RESET);
     }
 
@@ -64,9 +69,12 @@ public class BaseSteps {
             case MAIN:
                 mainView.checkScreenFormat();
                 break;
+            case EDIT_VIEW:
+                editView.checkScreenFormat();
+                break;
             default:
                 try {
-                    throw new UnknownScreenException(UNKNOWN_SCREEN);
+                    throw new UnknownScreenException(UNKNOWN_SCREEN+ " "+screen);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -90,6 +98,9 @@ public class BaseSteps {
                 break;
             case SETTING:
                 mainView.setSettings();
+                break;
+            case SAVE:
+                editView.save();
                 break;
             default:
                 try {

@@ -43,16 +43,8 @@ public class IOSCucumberRunnerTest {
 		capabilities.setCapability("platformVersion", platformVersion);
 		capabilities.setCapability("automationName","XCUITest");
 		capabilities.setCapability("noReset", true);
-	/*	capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, wda);
-		capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, "true");
-		capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, "false");
-		capabilities.setCapability(IOSMobileCapabilityType.SHOW_XCODE_LOG, "false");
-		capabilities.setCapability(IOSMobileCapabilityType.ACCEPT_INSECURE_CERTS, "true");
-		capabilities.setCapability(IOSMobileCapabilityType.USE_NEW_WDA, "false");
-		capabilities.setCapability(MobileCapabilityType.SUPPORTS_JAVASCRIPT, "true");
-		capabilities.setCapability(IOSMobileCapabilityType.WAIT_FOR_APP_SCRIPT, "true");
-		capabilities.setCapability(IOSMobileCapabilityType.SUPPORTS_ALERTS, "true");*/
-		//capabilities.setCapability(IOSMobileCapabilityType.CONNECT_HARDWARE_KEYBOARD, "true");
+		capabilities.setCapability("fullReset",false);
+
 		URL url = new URL("http://localhost:" + node_port +"/wd/hub");
 		driver = new IOSDriver(url, capabilities);
 		System.out.println("URL: " + url);
@@ -65,6 +57,7 @@ public class IOSCucumberRunnerTest {
 	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
 	public void scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) throws Throwable {
 		System.out.println("scenario....");
+
 		testNGCucumberRunner.runScenario(pickle.getPickle());
 	}
 	
@@ -83,6 +76,6 @@ public class IOSCucumberRunnerTest {
 	public void tearDownClass() {
 		System.out.println("tearDownClass....");
 		testNGCucumberRunner.finish();
-		if (driver!=null) driver.closeApp();
+		//if (driver!=null) driver.closeApp();
 	}
 }

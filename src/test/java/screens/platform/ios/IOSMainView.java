@@ -1,4 +1,4 @@
-package screens.platform;
+package screens.platform.ios;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
@@ -33,9 +33,9 @@ public class IOSMainView extends Actions implements MainView {
 
     @Override
     public void selectUser(String name, String last) {
-
-        click(By.id(last.trim() + ", " + name.trim()));
-        LOGGER.info("User: "+name+" "+last+ " is selected");
+        sleep(2000);
+        waitByAccessibility(last.trim() + ", " + name.trim()).click();
+        LOGGER.info("User: " + name + " " + last + " is selected");
     }
 
     @Override

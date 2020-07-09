@@ -34,6 +34,7 @@ public class AndroidMainView extends Actions implements MainView {
 
     @Override
     public void selectUser(String name, String last) {
+        sleep(500);
         String completeName = "\"" + last + ", " + name + "\"";
         click(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.support.v7.widget.RecyclerView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView[@text=" + completeName + "]"));
         LOGGER.info("User: "+name+" "+last+ " is selected");

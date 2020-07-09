@@ -1,4 +1,4 @@
-@ios @android
+
 Feature: Main flow
 
   Scenario: Select User

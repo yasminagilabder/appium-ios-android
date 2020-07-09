@@ -50,17 +50,9 @@ public class AndroidCucumberRunnerTest {
         capabilities.setCapability("udid", UDID);
         capabilities.setCapability("platformVersion", platformVersion);
         capabilities.setCapability("deviceName", deviceName);
-        capabilities.setCapability("autoGrantPermissions", true);
-       // capabilities.setCapability("fullReset", true);
-        capabilities.setCapability("noReset", false);
-        capabilities.setCapability("resetKeyboard", true);
-        capabilities.setCapability("unicodeKeyboard", true);
-        capabilities.setCapability("printPageSourceOnFindFailure", true);
-        capabilities.setCapability("autoLaunch", "true");
-        capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_DURATION, 30000);
-        capabilities.setCapability(AndroidMobileCapabilityType.ADB_EXEC_TIMEOUT, 90000);
         capabilities.setCapability("automationName", AutomationName.ANDROID_UIAUTOMATOR2);
-
+        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("fullReset",false);
 
         URL url = new URL("http://localhost:" + node_port + "/wd/hub");
         System.out.println("URL: " + url.toString());
@@ -82,7 +74,7 @@ public class AndroidCucumberRunnerTest {
     @DataProvider
     public Object[][] scenarios() {
         if (testNGCucumberRunner != null) {
-            System.out.println("Scenarios.: ");
+            System.out.println("Scenarios: ");
             return testNGCucumberRunner.provideScenarios();
         } else {
             System.out.println("Did you run the setup script as in Readme?");
@@ -94,7 +86,7 @@ public class AndroidCucumberRunnerTest {
     public void tearDownClass() {
         System.out.println("tearDownClass");
         testNGCucumberRunner.finish();
-        if (driver!=null) driver.closeApp();
+       // if (driver!=null) driver.closeApp();
 
     }
 }
