@@ -1,16 +1,11 @@
 package acceptanceTests.runners;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.AutomationName;
-import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
 import util.driver.ThreadLocalDriver;
@@ -18,7 +13,6 @@ import util.driver.ThreadLocalDriver;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 
 @CucumberOptions(
@@ -52,7 +46,12 @@ public class AndroidCucumberRunnerTest {
         capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("automationName", AutomationName.ANDROID_UIAUTOMATOR2);
         capabilities.setCapability("noReset", true);
-        capabilities.setCapability("fullReset",false);
+        capabilities.setCapability("fullReset", false);
+        capabilities.setCapability("language", "en");
+        capabilities.setCapability("locale", "uk");
+
+       /* capabilities.setCapability("language","es");
+        capabilities.setCapability("locale","ES");*/
 
         URL url = new URL("http://localhost:" + node_port + "/wd/hub");
         System.out.println("URL: " + url.toString());
@@ -61,13 +60,15 @@ public class AndroidCucumberRunnerTest {
         System.out.println("deviceName: " + deviceName);
         System.out.println("udid: " + UDID);
         System.out.println("session: " + driver.getSessionId());
+
         ThreadLocalDriver.setTLDriver(driver);
+
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
     @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
     public void scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) throws Throwable {
-        System.out.println("Scenario: "+cucumberFeature.toString());
+        System.out.println("Scenario: " + cucumberFeature.toString());
         testNGCucumberRunner.runScenario(pickle.getPickle());
     }
 
@@ -86,7 +87,7 @@ public class AndroidCucumberRunnerTest {
     public void tearDownClass() {
         System.out.println("tearDownClass");
         testNGCucumberRunner.finish();
-       // if (driver!=null) driver.closeApp();
+        // if (driver!=null) driver.closeApp();
 
     }
 }

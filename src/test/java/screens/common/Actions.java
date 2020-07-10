@@ -3,8 +3,6 @@ package screens.common;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -13,8 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
+
+
 
 public class Actions {
 
@@ -89,4 +87,25 @@ public class Actions {
             e.printStackTrace();
         }
     }
+    /*public void verticalSwipe(MobileElement scrollableWindowFrame,
+                             Enums.Direction direction) {
+        TouchAction action = new TouchAction(driver);
+        int yCoordinatetop = (int) (scrollableWindowFrame.getSize().getHeight() * (0.20));
+        int yCoordinateBottom = (int) (scrollableWindowFrame.getSize()
+                .getHeight() * (0.70));
+        int xCoordinate = scrollableWindowFrame.getSize().getWidth() / 2;
+
+        Log.INFO("x:" + xCoordinate + "  y1:" + yCoordinatetop + "  y2:"
+                + yCoordinateBottom);
+
+        if (direction.equals(Enums.Direction.UP)) {
+            action.longPress(xCoordinate, yCoordinateBottom)
+                    .moveTo(xCoordinate, yCoordinatetop).release().perform();
+        } else if (direction.equals(Enums.Direction.DOWN)) {
+            action.longPress(xCoordinate, yCoordinatetop)
+                    .moveTo(xCoordinate, yCoordinateBottom).release().perform();
+        }
+
+    }*/
+
 }

@@ -22,7 +22,7 @@ public class AndroidMainView extends Actions implements MainView {
     }
 
     public void checkScreenFormat() {
-        sleep(5000);
+        sleep(10000);
         String title = waitAndFindElement(By.xpath(titleElementXpath)).getText();
         assertEquals(title, TITLE);
         LOGGER.info("-[Title] is correct");
